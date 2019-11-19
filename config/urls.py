@@ -5,8 +5,9 @@ from django_ask_sdk.skill_adapter import SkillAdapter
 
 interval_training = SkillAdapter.as_view(
     skill=views.skill)
-
+# ToDo Make a default index view. Dont want root url to hit alexa skill
+# create homepage view 
 urlpatterns = [
-    path('/', interval_training, name='index'),
+    path('alexa', interval_training, name='alexa'),
     path('admin/', admin.site.urls),
 ]
