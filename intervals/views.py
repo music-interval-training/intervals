@@ -5,6 +5,13 @@ from ask_sdk_core.handler_input import HandlerInput
 from ask_sdk_core.dispatch_components import AbstractRequestHandler
 from ask_sdk_core.utils import is_request_type
 from ask_sdk_model import Response
+from django.views.decorators.csrf import csrf_exempt
+
+
+def home_page(request):
+    return render(request, "intervals/home_page.html")
+
+
 
 sb = SkillBuilder()
 
@@ -26,3 +33,4 @@ class LaunchRequestHandler(AbstractRequestHandler):
 sb.add_request_handler(LaunchRequestHandler())
 
 skill = sb.create()
+

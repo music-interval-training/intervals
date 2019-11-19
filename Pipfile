@@ -6,7 +6,6 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-requirements-txt = "*"
 ask-sdk-core = "==1.12.0"
 ask-sdk-model = "==1.19.0"
 ask-sdk-runtime = "==1.12.0"
