@@ -23,6 +23,6 @@ class LaunchRequestHandler(AbstractRequestHandler):
 # Other skill components here ....
 
 # Register all handlers, interceptors etc.
-# For eg : sb.add_request_handler(LaunchRequestHandler())
+sb.add_request_handler(LaunchRequestHandler())
 
 skill = sb.create()
