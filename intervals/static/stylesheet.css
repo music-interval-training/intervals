@@ -1,0 +1,50 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-size: cover;
+	background: -webkit-linear-gradient(to right, #a2ab58, #636363);
+	background: linear-gradient(to right, #a2ab58, #636363);
+}
+h1 {
+	margin-bottom: 5%;
+}
+.quotes {
+	text-align: center;
+	font-family: 'Open Sans', sans-serif;
+	margin-top: 10%;
+	font-style: italic;
+	font-size: xx-large;
+	color: rgb(19, 18, 18);
+}
+.login-buttons {
+	padding: 1%;
+	display: flex;
+	flex-wrap: nowrap;
+	flex-direction: row;
+	justify-content: flex-end;
+}
+.amazon-button {
+	width: 312px;
+	height: 64px;
+	background: url("https://images-na.ssl-images-amazon.com/images/G/01/lwa/btnLWA_gold_312x64.png") no-repeat;
+}
+.amazon-button:hover {
+	width: 312px;
+	height: 64px;
+	background: url("https://images-na.ssl-images-amazon.com/images/G/01/lwa/btnLWA_gold_312x64_pressed.png") no-repeat;
+}
+.intervals-div {
+	display: flex;
+	justify-content: center;
+	margin-top: 10%;
+	margin-bottom: 10%;
+}
+.intervals-png {
+	-webkit-box-shadow: 6px 4px 12px 1px rgba(65, 63, 65, 1);
+	-moz-box-shadow: 6px 4px 12px 1px rgba(65, 63, 65, 1);
+	box-shadow: 6px 4px 12px 1px rgb(65, 63, 65);
+}
