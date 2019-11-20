@@ -1,8 +1,7 @@
 from random import randrange
 
 def get_audio_file():
-    intervals =
-    [
+    intervals =[
         {"interval": "major second", "audio_files": ["Major_2-A-B+.mp3", "Major_2-D-E+.mp3", "Major_2-G%23-A%23.mp3"]},
         {"interval": "minor second", "audio_files": ["Minor_2-A-B-flat+.mp3", "Minor_2-C-C%23+.mp3", "Minor_2-F-F%23+.mp3"]},
         {"interval": "major third", "audio_files": ["Major_3-D-F%23+.mp3", "Major_3-F%23-A%23.mp3", "Major_3-G-B+.mp3"]}, 
@@ -15,7 +14,6 @@ def get_audio_file():
         {"interval": "minor seventh", "audio_files": ["Minor_7-E-D.mp3", "Minor_7-E-flat-D-flat.mp3", "Minor_7-F-E-flat.mp3"]}, 
         {"interval": "major seventh", "audio_files": ["Major_7-C-B.mp3", "Major_7-E-flat-D.mp3", "Major_7-F-E.mp3"]}, 
         {"interval": "octave", "audio_files": ["Octave_C-C.mp3", "Octave_D-D.mp3", "Octave_E-E.mp3"]}, 
-        
     ]
 
     idx = randrange(0, len(intervals))
@@ -24,5 +22,5 @@ def get_audio_file():
     audio = interval['audio_files']
     random_file = audio[audio_idx]
     url = f"https://cohort-6-intervals.s3.amazonaws.com/{random_file}" 
-return url
+    return url
 
