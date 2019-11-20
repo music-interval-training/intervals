@@ -1,6 +1,6 @@
 from random import randrange
 
-def get_audio_file()
+def get_audio_file():
     intervals =
     [
         {"interval": "major second", "audio_files": ["Major_2-A-B+.mp3", "Major_2-D-E+.mp3", "Major_2-G%23-A%23.mp3"]},
