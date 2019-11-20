@@ -12,6 +12,69 @@ body {
 h1 {
 	margin-bottom: 5%;
 }
+
+/* .music-notes-div {
+	display: flex;
+	flex-direction: column;
+	justify-content: left;
+} */
+
+.music-notes1 {
+	font-size: 4.4rem;
+	position: absolute;
+	left: 2.5rem;
+	top: 9rem;
+	opacity: 0;
+	animation-name: topFadeOut;
+	animation-duration: 5s;
+}
+
+.music-notes2 {
+	font-size: 4.4rem;
+	position: absolute;
+	left: 2.5rem;
+	top: 9rem;
+	opacity: 0;
+	animation-name: topFadeOut;
+	animation-duration: 5s;
+}
+.music-notes3 {
+	font-size: 4.4rem;
+	position: absolute;
+	left: 2.5rem;
+	top: 9rem;
+	opacity: 0;
+	animation-name: topFadeOut;
+	animation-duration: 5s;
+}
+.music-notes4 {
+	font-size: 4.4rem;
+	position: absolute;
+	left: 2.5rem;
+	top: 9rem;
+	opacity: 0;
+	animation-name: topFadeOut;
+	animation-duration: 5s;
+}
+
+@keyframes topFadeOut {
+	0% {
+		/* position: absolute; */
+		top: -3rem;
+		opacity: 0;
+	}
+
+	75% {
+		/* position: absolute; */
+		top: 80%;
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+	}
+}
+
 .quotes {
 	text-align: center;
 	font-family: 'Open Sans', sans-serif;
@@ -20,6 +83,7 @@ h1 {
 	font-size: xx-large;
 	color: rgb(19, 18, 18);
 }
+
 .login-buttons {
 	padding: 1%;
 	display: flex;
@@ -47,4 +111,12 @@ h1 {
 	-webkit-box-shadow: 6px 4px 12px 1px rgba(65, 63, 65, 1);
 	-moz-box-shadow: 6px 4px 12px 1px rgba(65, 63, 65, 1);
 	box-shadow: 6px 4px 12px 1px rgb(65, 63, 65);
+}
+body {
+	opacity: 1;
+	transition: 0.7s opacity;
+}
+body.fade {
+	opacity: 0;
+	transition: none;
 }
