@@ -1,7 +1,8 @@
 from django.shortcuts import render
 
 import logging
-from ask_sdk_core.utils import is_request_type, ask_utils
+from ask_sdk_core.utils import is_request_type
+import ask_sdk_core.utils as ask_utils
 
 from ask_sdk_core.skill_builder import SkillBuilder
 from ask_sdk_core.dispatch_components import AbstractRequestHandler
