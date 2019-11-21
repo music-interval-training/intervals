@@ -25,24 +25,28 @@ class LaunchRequestHandler(AbstractRequestHandler):
     """Handler for skill launch."""
     def can_handle(self, handler_input):
         # type: (HandlerInput) -> bool
-        return is_request_type("LaunchRequest")(handler_input)
+        return ask_utils.is_request_type("LaunchRequest")(handler_input)
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
         speak_output = "Hello! This is Music Interval Training. Shall I play an interval for you to guess?"
         reprompt = "Say yes to start interval training or no to quit"
-        handler_input.response_builder.speak(speak_output).ask(reprompt)
-        return handler_input.response_builder
+        return (
+            handler_input.response_builder
+            .speak(speak_output)
+            .ask(reprompt)
+            .response
+        )
     
 class CaptureIntervalIntentHandler(AbstractRequestHandler):
     def can_handle(self, handler_input):
         return ask_utils.is_intent_name("CaptureIntervalIntentHandler")(handler_input)
 
     def handle(self, handler_input):
-        audio_url = get_audio_file()
-        speech = f"<audio src='{audio_url}' />"
         slots = handler_input.request_envelope.request.intent.slots
         guess = slots["INTERVAL_TYPE"].value
+        audio_url = get_audio_file()
+        speech = f"<audio src='{audio_url}' />"
         speak_output = f"Your guess was {INTERVAL}"
 
 
@@ -69,7 +73,8 @@ class CancelOrStopIntentHandler(AbstractRequestHandler):
     def can_handle(self, handler_input):
         # type: (HandlerInput) -> bool
         return (ask_utils.is_intent_name("AMAZON.CancelIntent")(handler_input) or
-                ask_utils.is_intent_name("AMAZON.StopIntent")(handler_input))
+                ask_utils.is_intent_name("AMAZON.StopIntent")(handler_input) or
+                ask_utils.is_intent_name("AMAZON.NoIntent")(handler_input))
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
