@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,12 +6,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'stylesheet.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:700i&display=swap" rel="stylesheet">
+    <script src="{% static 'main.js' %}" defer></script>
     <title>Music Interval Training</title>
 </head>
 
 
-{% block content %}
+<body>
 
-{% endblock %}
+    {% block content %}
+    <script>
+
+        // let images = document.querySelector('.intervals-png')
+        document.body.className = 'fade';
+
+    </script>
+
+    {% endblock %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function (e) {
+            console.log('hey')
+            document.body.className = "";
+        });
+    </script>
+
+
+</body>
+
 
 </html>
