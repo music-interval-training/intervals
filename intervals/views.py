@@ -94,8 +94,8 @@ class CancelOrStopIntentHandler(AbstractRequestHandler):
     def can_handle(self, handler_input):
         # type: (HandlerInput) -> bool
         return (ask_utils.is_intent_name("AMAZON.CancelIntent")(handler_input) or
-                ask_utils.is_intent_name("AMAZON.StopIntent")(handler_input) or
-                ask_utils.is_intent_name("AMAZON.NoIntent")(handler_input))
+                ask_utils.is_intent_name("AMAZON.StopIntent")(handler_input)
+                )
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
@@ -170,6 +170,8 @@ sb.add_request_handler(LaunchRequestHandler())
 sb.add_request_handler(HelpIntentHandler())
 sb.add_request_handler(CancelOrStopIntentHandler())
 sb.add_request_handler(SessionEndedRequestHandler())
+sb.add_request_handler(YesIntentHandler())
+sb.add_request_handler(IntervalGuessIntentHandler())
 sb.add_request_handler(IntentReflectorHandler()) # make sure IntentReflectorHandler is last so it doesn't override your custom intent handlers
 
 sb.add_exception_handler(CatchAllExceptionHandler())
