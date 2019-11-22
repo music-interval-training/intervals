@@ -1,6 +1,6 @@
 from random import randrange
 
-def get_audio_file():
+def get_audio_info():
     intervals =[
         {"interval": "major second", "audio_files": ["Major_2-A-B+.mp3", "Major_2-D-E+.mp3", "Major_2-G%23-A%23.mp3"]},
         {"interval": "minor second", "audio_files": ["Minor_2-A-B-flat+.mp3", "Minor_2-C-C%23+.mp3", "Minor_2-F-F%23+.mp3"]},
@@ -22,5 +22,5 @@ def get_audio_file():
     audio = interval['audio_files']
     random_file = audio[audio_idx]
     url = f"https://cohort-6-intervals.s3.amazonaws.com/{random_file}" 
-    return url
+    return (interval, url)
 
