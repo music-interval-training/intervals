@@ -33,7 +33,6 @@ h1 {
 .buttons-outerdiv {
 	display: flex;
 	justify-content: flex-end;
-	/* align-items: flex-end; */
 }
 .amazon-button {
 	width: 312px;
@@ -52,10 +51,6 @@ h1 {
 	margin-bottom: 10%;
 }
 .intervals-png {
-	background: linear-gradient(rgba(190, 196, 183, 0.3), rgba(190, 196, 183, 0.3)),
-		no-repeat center/cover url(../static/images/diatonic_intervals.png);
-	width: 60%;
-	height: 150px;
 	-webkit-box-shadow: 6px 4px 12px 1px rgba(65, 63, 65, 1);
 	-moz-box-shadow: 6px 4px 12px 1px rgba(65, 63, 65, 1);
 	box-shadow: 6px 4px 12px 1px rgb(65, 63, 65);
@@ -72,14 +67,12 @@ h1 {
 	flex-wrap: wrap;
 	align-items: left;
 	width: 60%;
-	/* margin-bottom: 30%; */
-	/* margin-left: 5%; */
 	border: 1px solid #333333;
 	-webkit-box-shadow: 3px 2px 6px 1px rgba(65, 63, 65, 1);
 	-moz-box-shadow: 3px 2px 6px 1px rgba(65, 63, 65, 1);
 	box-shadow: 3px 2px 6px 1px rgb(65, 63, 65);
 	padding: 1%;
-	background-color: rgb(230, 233, 227);
+	background-color: rgb(247, 248, 246);
 	font-size: large;
 	font-family: 'Open Sans', sans-serif;
 	color: rgb(36, 34, 34);
