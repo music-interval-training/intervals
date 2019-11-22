@@ -19,8 +19,8 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
 
-# def home_page(request):
-#     return render(request, "intervals/home_page.html")
+def home_page(request):
+    return render(request, "intervals/home_page.html")
 
 
 class LaunchRequestHandler(AbstractRequestHandler):
