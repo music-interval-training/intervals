@@ -30,13 +30,7 @@ class LaunchRequestHandler(AbstractRequestHandler):
         return ask_utils.is_request_type("LaunchRequest")(handler_input)
 
     def handle(self, handler_input):
-        # type: (HandlerInput) -> Response
-        logger.info("In LaunchRequestHandler")
-        _ = handler_input.attributes_manager.request_attributes["_"]
-        
-        locale = handler_input.request_envelope.request.locale
-        item = util.get_random_item(locale)
-        
+        # type: (HandlerInput) -> Response        
         speak_output = "Hello! This is Music Interval Training. Shall I play an interval for you to guess?"
         reprompt = "Say yes to start interval training or no to quit"
         return (
@@ -73,7 +67,7 @@ class IntervalGuessIntentHandler(AbstractRequestHandler):
         return (
                 handler_input.response_builder
                     .speak(speak_output)
-                    .ask("You are a fucker?")
+                    .ask("You are incorrect")
                     .response
             )
 
