@@ -13,13 +13,15 @@ from ask_sdk_model import Response
 
 from .interval import get_audio_file
 
+sb = SkillBuilder()
+
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
-def home_page(request):
-    return render(request, "intervals/home_page.html")
 
-sb = SkillBuilder()
+# def home_page(request):
+#     return render(request, "intervals/home_page.html")
+
 
 class LaunchRequestHandler(AbstractRequestHandler):
     """Handler for skill launch."""
@@ -29,6 +31,12 @@ class LaunchRequestHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
+        logger.info("In LaunchRequestHandler")
+        _ = handler_input.attributes_manager.request_attributes["_"]
+        
+        locale = handler_input.request_envelope.request.locale
+        item = util.get_random_item(locale)
+        
         speak_output = "Hello! This is Music Interval Training. Shall I play an interval for you to guess?"
         reprompt = "Say yes to start interval training or no to quit"
         return (
@@ -38,17 +46,36 @@ class LaunchRequestHandler(AbstractRequestHandler):
             .response
         )
     
-class CaptureIntervalIntentHandler(AbstractRequestHandler):
+class YesIntentHandler(AbstractRequestHandler):
     def can_handle(self, handler_input):
-        return ask_utils.is_intent_name("CaptureIntervalIntentHandler")(handler_input)
+        return ask_utils.is_intent_name("YesIntent")(handler_input)
+
+    def handle(self, handler_input):
+        audio_url = get_audio_file()
+        speak_output = f"Great! Guess the interval <audio src='{audio_url}' />"
+      
+        return (
+                handler_input.response_builder
+                    .speak(speak_output)
+                    .ask("What is your guess?")
+                    .response
+            )
+
+class IntervalGuessIntentHandler(AbstractRequestHandler):
+    def can_handle(self, handler_input):
+        return ask_utils.is_intent_name("IntervalGuessIntent")(handler_input)
 
     def handle(self, handler_input):
         slots = handler_input.request_envelope.request.intent.slots
-        guess = slots["INTERVAL_TYPE"].value
-        audio_url = get_audio_file()
-        speech = f"<audio src='{audio_url}' />"
+        guess = slots["INTERVAL"].value
         speak_output = f"Your guess was {INTERVAL}"
 
+        return (
+                handler_input.response_builder
+                    .speak(speak_output)
+                    .ask("You are a fucker?")
+                    .response
+            )
 
 class HelpIntentHandler(AbstractRequestHandler):
     """Handler for Help Intent."""
