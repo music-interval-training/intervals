@@ -108,7 +108,12 @@ class CancelOrStopIntentHandler(AbstractRequestHandler):
     def can_handle(self, handler_input):
         # type: (HandlerInput) -> bool
         return (ask_utils.is_intent_name("AMAZON.CancelIntent")(handler_input) or
+<<<<<<< HEAD
                 ask_utils.is_intent_name("AMAZON.StopIntent")(handler_input))
+=======
+                ask_utils.is_intent_name("AMAZON.StopIntent")(handler_input)
+                )
+>>>>>>> af3f0acddd2c97cb2a6146c8b29003a7753b8fec
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
