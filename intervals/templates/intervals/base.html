@@ -6,6 +6,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'stylesheet.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:700i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
+    <script src="{% static 'main.js' %}" defer></script>
+
     <title>Music Interval Training</title>
 
 <link rel="stylesheet" href="{% static 'main.css' %}">
@@ -15,8 +21,30 @@
 </head>
 
 
-{% block content %}
+<body>
+    <div id="amazon-root"></div>
+    <script type="text/javascript">
 
-{% endblock %}
+        window.onAmazonLoginReady = function () {
+            amazon.Login.setClientId('amzn1.application-oa2-client.4193140bef1f4d1e957b5e80812c64ca');
+        };
+        (function (d) {
+            var a = d.createElement('script'); a.type = 'text/javascript';
+            a.async = true; a.id = 'amazon-login-sdk';
+            a.src = 'https://assets.loginwithamazon.com/sdk/na/login1.js';
+            d.getElementById('amazon-root').appendChild(a);
+        })(document);
+
+    </script>
+    {% block content %}
+
+
+    {% endblock %}
+
+
+
+
+</body>
+
 
 </html>

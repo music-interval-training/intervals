@@ -1,6 +1,89 @@
 {% extends "intervals/base.html" %}
+{% load static %}
 
 {% block content %}
+<div id="amazon-root"></div>
+<script type="text/javascript">
+
+    window.onAmazonLoginReady = function () {
+        amazon.Login.setClientId('amzn1.application-oa2-client.4193140bef1f4d1e957b5e80812c64ca');
+    };
+    (function (d) {
+        console.log('hi')
+        var a = d.createElement('script'); a.type = 'text/javascript';
+        a.async = true; a.id = 'amazon-login-sdk';
+        a.src = 'https://assets.loginwithamazon.com/sdk/na/login1.js';
+        d.getElementById('amazon-root').appendChild(a);
+    })(document);
+
+</script>
+<div id="top"></div>
+<div class="buttons-outerdiv">
+    <div class="login-buttons">
+
+        <a class="amazon-button" href id="LoginWithAmazon"></a>
+        <div class="learn-more-buttondiv"><a href="#learn-more-outerdiv"><button class="learn-more-button"
+                    type="button">Learn
+                    more</button></a>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    document.getElementById('LoginWithAmazon').onclick = function () {
+        options = {}
+        options.scope = 'profile';
+        options.scope_data = {
+            'profile': { 'essential': false }
+        };
+        amazon.Login.authorize(options,
+            'https://www.musicintervaltraining.com/');
+        return false;
+    };
+</script>
+<div class="quotes">
+
+    <h1>"Alexa, open music interval training."</h1>
+    <p>Music interval ear training for the aspiring musician
+    </p>
+    <p>An interval is the difference in pitch between
+        two sounds</p>
+
+</div>
+
+
+
+<div class="intervals-pngdiv">
+    <img class="intervals-png">
+
+</div>
+
+<div id="learn-more-outerdiv">
+
+    <div id="learn-more">
+        <h3>Music Interval Training</h3>
+        <p style="text-indent: 2%;">This app will help you master identifying different music interval patterns. You
+            will hear two notes played from
+            Alexa and guess the interval played. This application will keep a score of correct and incorrect answers so
+            that
+            you can see your progress and identify the most challenging intervals.</p>
+        <br>
+        <h3>How to use:</h3>
+        <div style="text-indent: 2%;">
+            <p>To Get Started: Say, "Alexa, open Music Interval Training"</p>
+            <p>Alexa will prompt you whether to play a random music interval or not</p>
+            <p>You will guess the type of interval played and Alexa will confirm whether correct or not.</p>
+            <p>You will be able to view your progress on this site through our dynamic charts</p>
+        </div>
+        <p>Start by Saying:</p>
+        <div class="intro-alexa-font">
+            <p>"Alexa, open Music Interval Training"</p>
+            <p>"Alexa, play me an interval"</p>
+        </div>
+    </div>
+</div>
+<a class="learn-more-button" href="#top">Back to top</a>
+
+
 
 
 <p>Hello</p>

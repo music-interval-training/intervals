@@ -13,6 +13,8 @@ def home_page(request):
 
 
 
+from .interval import get_audio_file
+
 sb = SkillBuilder()
 
 class LaunchRequestHandler(AbstractRequestHandler):
@@ -23,7 +25,8 @@ class LaunchRequestHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
-        speech = "Hello"
+        audio_url = get_audio_file()
+        speech = f"<audio src='{audio_url}' />"
         handler_input.response_builder.speak(speech)
         return handler_input.response_builder.response
 
