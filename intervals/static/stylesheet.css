@@ -110,3 +110,7 @@ h1 {
 .learn-more-button:hover {
 	background: radial-gradient(circle, rgba(251, 216, 63, 1) 0%, rgba(230, 178, 51, 1) 100%);
 }
+.charts{
+	background-color: white;
+	color:white;
+}
