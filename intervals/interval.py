@@ -22,5 +22,5 @@ def get_audio_info():
     audio = interval['audio_files']
     random_file = audio[audio_idx]
     url = f"https://cohort-6-intervals.s3.amazonaws.com/{random_file}" 
-    return (interval, url)
+    return (interval['interval'], url)
 
