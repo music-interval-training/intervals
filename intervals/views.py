@@ -34,15 +34,35 @@ class LaunchRequestHandler(AbstractRequestHandler):
         # type: (HandlerInput) -> Response        
         logger.info("In LaunchRequestHandler")
 
-        speak_output = "Hello! This is Music Interval Training. Shall I play an interval for you to guess?"
-        reprompt = "Say yes to start interval training or no to quit"
-        return (
-            handler_input.response_builder
-            .speak(speak_output)
-            .ask(reprompt)
-            .response
-        )
+        speak_output = "Hello! This is Music Interval Training. Guess the interval"
+        # reprompt = "Guess the interval"
+        # return (
+        #     handler_input.response_builder
+        #     .speak(speak_output)
+        #     .ask(reprompt)
+        #     .response
+        # )
     
+        # attrs is an assumed empty attributes dictionary established  in order to store  session attributes.
+        attrs = handler_input.attributes_manager.persistent_attributes
+        interval, audio_url = get_audio_info()
+        # persistent attributes is a dictonary with the key interval
+        attrs['interval'] = interval 
+        # stores session attributes
+        logger.info(interval)
+        logger.info(audio_url)
+
+        handler_input.attributes_manager.session_attributes = attrs
+        speak_output = f"Great! Guess the interval <audio src='{audio_url}' />"
+      
+        return (
+                handler_input.response_builder
+                    .speak(speak_output)
+                    .ask("What is your guess?")
+                    .response
+            )
+
+
 class StartTrainingIntentHandler(AbstractRequestHandler):
     # setting of session attributes
     def can_handle(self, handler_input):
