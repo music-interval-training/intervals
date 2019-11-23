@@ -28,7 +28,8 @@ class LaunchRequestHandler(AbstractRequestHandler):
     """Handler for skill launch."""
     def can_handle(self, handler_input):
         # type: (HandlerInput) -> bool
-        return ask_utils.is_request_type("LaunchRequest")(handler_input)
+         return (ask_utils.is_request_type("LaunchRequest")(handler_input) or
+                ask_utils.is_intent_name("GetNewIntervalIntent")(handler_input))
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response        
@@ -41,7 +42,7 @@ class LaunchRequestHandler(AbstractRequestHandler):
         logger.info(audio_url)
 
         handler_input.attributes_manager.session_attributes = attrs
-        speak_output = f"Great! I will play an interval for you to guess <audio src='{audio_url}' />"
+        speak_output = f"Great! I will play an interval for you to guess <audio src='{audio_url}' /> What is your guess"
       
         return (
                 handler_input.response_builder
