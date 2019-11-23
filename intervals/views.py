@@ -33,16 +33,6 @@ class LaunchRequestHandler(AbstractRequestHandler):
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response        
         logger.info("In LaunchRequestHandler")
-
-        speak_output = "Hello! This is Music Interval Training. Guess the interval"
-        # reprompt = "Guess the interval"
-        # return (
-        #     handler_input.response_builder
-        #     .speak(speak_output)
-        #     .ask(reprompt)
-        #     .response
-        # )
-    
         interval, audio_url = get_audio_info()
         # persistent attributes is a dictonary with the key interval
         attrs = {'interval': interval}
@@ -51,12 +41,11 @@ class LaunchRequestHandler(AbstractRequestHandler):
         logger.info(audio_url)
 
         handler_input.attributes_manager.session_attributes = attrs
-        speak_output = f"Great! Guess the interval <audio src='{audio_url}' />"
+        speak_output = f"Guess the following interval <audio src='{audio_url}' />"
       
         return (
                 handler_input.response_builder
                     .speak(speak_output)
-                    .ask("What is your guess?")
                     .response
             )
 
