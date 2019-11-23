@@ -43,11 +43,9 @@ class LaunchRequestHandler(AbstractRequestHandler):
         #     .response
         # )
     
-        # attrs is an assumed empty attributes dictionary established  in order to store  session attributes.
-        attrs = handler_input.attributes_manager.persistent_attributes
         interval, audio_url = get_audio_info()
         # persistent attributes is a dictonary with the key interval
-        attrs['interval'] = interval 
+        attrs = {'interval': interval}
         # stores session attributes
         logger.info(interval)
         logger.info(audio_url)
