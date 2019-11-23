@@ -40,10 +40,10 @@ class LaunchRequestHandler(AbstractRequestHandler):
             .response
         )
     
-class YesIntentHandler(AbstractRequestHandler):
+class StartTrainingIntentHandler(AbstractRequestHandler):
     # setting of session attributes
     def can_handle(self, handler_input):
-        return ask_utils.is_request_type("YesIntent")(handler_input)
+        return ask_utils.is_request_type("StartTrainingIntent")(handler_input)
 
     def handle(self, handler_input):
         # attrs is an assumed empty attributes dictionary established  in order to store  session attributes.
@@ -181,13 +181,12 @@ class CatchAllExceptionHandler(AbstractExceptionHandler):
 
 # Register all handlers, interceptors etc.
 sb.add_request_handler(LaunchRequestHandler())
+sb.add_request_handler(StartTrainingIntentHandler())
+sb.add_request_handler(IntervalGuessIntentHandler())
 sb.add_request_handler(HelpIntentHandler())
 sb.add_request_handler(CancelOrStopIntentHandler())
 sb.add_request_handler(SessionEndedRequestHandler())
-sb.add_request_handler(YesIntentHandler())
-sb.add_request_handler(IntervalGuessIntentHandler())
-sb.add_request_handler(IntentReflectorHandler()) # make sure IntentReflectorHandler is last so it doesn't override your custom intent handlers
-
+# sb.add_request_handler(IntentReflectorHandler()) # make sure IntentReflectorHandler is last so it doesn't override your custom intent handlers
 sb.add_exception_handler(CatchAllExceptionHandler())
 
 skill = sb.create()
