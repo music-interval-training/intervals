@@ -17,7 +17,7 @@ from .interval import get_audio_info
 sb = SkillBuilder()
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+logger.setLevel(logging.DEBUG)
 
 
 def home_page(request):
@@ -32,6 +32,8 @@ class LaunchRequestHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response        
+        logger.info("In LaunchRequestHandler")
+
         speak_output = "Hello! This is Music Interval Training. Shall I play an interval for you to guess?"
         reprompt = "Say yes to start interval training or no to quit"
         return (
@@ -44,15 +46,21 @@ class LaunchRequestHandler(AbstractRequestHandler):
 class StartTrainingIntentHandler(AbstractRequestHandler):
     # setting of session attributes
     def can_handle(self, handler_input):
+        logger.info("In StartTrainingIntentHandler can handle") 
+
         return ask_utils.is_request_type("StartTrainingIntent")(handler_input)
 
     def handle(self, handler_input):
+        logger.info("In StartTrainingIntentHandler")
         # attrs is an assumed empty attributes dictionary established  in order to store  session attributes.
         attrs = handler_input.attributes_manager.persistent_attributes
         interval, audio_url = get_audio_info()
         # persistent attributes is a dictonary with the key interval
         attrs['interval'] = interval 
         # stores session attributes
+        logger.info(interval)
+        logger.info(audio_url)
+
         handler_input.attributes_manager.session_attributes = attrs
         speak_output = f"Great! Guess the interval <audio src='{audio_url}' />"
       
