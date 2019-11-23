@@ -5,8 +5,9 @@ from ask_sdk_core.utils import is_request_type
 import ask_sdk_core.utils as ask_utils
 
 from ask_sdk_core.skill_builder import SkillBuilder
-from ask_sdk_core.dispatch_components import AbstractRequestHandler
-from ask_sdk_core.dispatch_components import AbstractExceptionHandler
+from ask_sdk_core.dispatch_components import (
+    AbstractRequestHandler, AbstractExceptionHandler,
+    AbstractResponseInterceptor, AbstractRequestInterceptor)
 from ask_sdk_core.handler_input import HandlerInput
 from django.views.decorators.csrf import csrf_exempt
 from ask_sdk_model import Response
@@ -178,6 +179,21 @@ class CatchAllExceptionHandler(AbstractExceptionHandler):
                 .response
         )
 
+# Request and Response Loggers
+class RequestLogger(AbstractRequestInterceptor):
+    """Log the request envelope."""
+    def process(self, handler_input):
+        # type: (HandlerInput) -> None
+        logger.info("Request Envelope: {}".format(
+            handler_input.request_envelope))
+
+
+class ResponseLogger(AbstractResponseInterceptor):
+    """Log the response envelope."""
+    def process(self, handler_input, response):
+        # type: (HandlerInput, Response) -> None
+        logger.info("Response: {}".format(response))
+
 
 # Register all handlers, interceptors etc.
 sb.add_request_handler(LaunchRequestHandler())
@@ -188,6 +204,10 @@ sb.add_request_handler(CancelOrStopIntentHandler())
 sb.add_request_handler(SessionEndedRequestHandler())
 # sb.add_request_handler(IntentReflectorHandler()) # make sure IntentReflectorHandler is last so it doesn't override your custom intent handlers
 sb.add_exception_handler(CatchAllExceptionHandler())
+# Add response interceptor to the skill.
+sb.add_global_request_interceptor(RequestLogger())
+sb.add_global_response_interceptor(ResponseLogger());
+
 
 skill = sb.create()
 
