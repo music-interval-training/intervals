@@ -46,38 +46,9 @@ class LaunchRequestHandler(AbstractRequestHandler):
         return (
                 handler_input.response_builder
                     .speak(speak_output)
-                    .ask("What is your guess?")
                     .response
             )
 
-
-# class StartTrainingIntentHandler(AbstractRequestHandler):
-#     # setting of session attributes
-#     def can_handle(self, handler_input):
-#         logger.info("In StartTrainingIntentHandler can handle") 
-
-#         return ask_utils.is_request_type("StartTrainingIntent")(handler_input)
-
-#     def handle(self, handler_input):
-#         logger.info("In StartTrainingIntentHandler")
-#         # attrs is an assumed empty attributes dictionary established  in order to store  session attributes.
-#         attrs = handler_input.attributes_manager.persistent_attributes
-#         interval, audio_url = get_audio_info()
-#         # persistent attributes is a dictonary with the key interval
-#         attrs['interval'] = interval 
-#         # stores session attributes
-#         logger.info(interval)
-#         logger.info(audio_url)
-
-#         handler_input.attributes_manager.session_attributes = attrs
-#         speak_output = f"Great! Guess the interval <audio src='{audio_url}' />"
-      
-#         return (
-#                 handler_input.response_builder
-#                     .speak(speak_output)
-#                     .ask("What is your guess?")
-#                     .response
-#             )
 
 class IntervalGuessIntentHandler(AbstractRequestHandler):
     # getting session attributes
@@ -94,11 +65,12 @@ class IntervalGuessIntentHandler(AbstractRequestHandler):
             speak_output = f"Your guess was correct"
         else:
             speak_output = f"You guessed {guess} but the interval was a {interval}"
+        speak_output = f"{speak_output} Do you want to continue guessing?"
 
         return (
                 handler_input.response_builder
                     .speak(speak_output)
-                    .ask("Do you want to continue guessing?")
+                    .ask(speak_output)
                     .response
             )
 
