@@ -82,8 +82,8 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': '<dbname>',
-        'USER': '<username>’,
+        'NAME': 'intervals',
+        'USER': 'ubuntu',
         'HOST': '127.0.0.1',
         'PORT': '5432',
 
@@ -130,5 +130,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-
+try:
+    from .local_settings import *
+except ImportError:
+    pass
 
