@@ -5,6 +5,9 @@ class Record(models.Model):
     interval = models.CharField(max_length=30)
     guess = models.CharField(max_length=30)
     audio_url = models.URLField()
+    
+    def __str__(self):
+        return self.interval
 
     @property
     def is_correct(self):
