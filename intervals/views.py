@@ -69,10 +69,10 @@ class IntervalGuessIntentHandler(AbstractRequestHandler):
         guess = slots["INTERVAL"].value
         Record.objects.create(
             guess=guess,
-            interval=interval,
+            interval=interval[0],
             audio_url=audio_url
         )
-        is_correct = interval == guess
+        is_correct = guess in interval
         if is_correct:
             speak_output = f"Your guess was correct"
         else:
