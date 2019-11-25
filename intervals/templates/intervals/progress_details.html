@@ -1,0 +1,19 @@
+{% extends "intervals/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="main-container">
+    <nav class="nav-progress-page">
+        <h2>Music Interval Training</h2>
+
+    </nav>
+    <div class="charts-progress">
+        <div class="canvas-div">
+            <canvas id="myChart" width="400" height="300" class="charts" style="padding: 25px;"></canvas>
+        </div>
+        <div class="canvas-div">
+            <canvas id="myChart" width="400" height="300" class="charts" style="padding: 25px;"></canvas>
+        </div>
+    </div>
+</div>
+{% endblock %}

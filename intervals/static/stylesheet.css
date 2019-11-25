@@ -5,11 +5,12 @@
 }
 
 body {
-	background-size: cover;
-	opacity: 0.75;
-	background: -webkit-linear-gradient(to right, #a2ab58, #636363);
-	background: linear-gradient(to right, #a2ab58, #636363);
 	line-height: 2;
+	/* background: linear-gradient(to right, rgba(162, 171, 88, .8), rgba(99, 99, 99, .8)); */
+}
+
+.main-page-container {
+	background: linear-gradient(to right, rgba(162, 171, 88, .8), rgba(99, 99, 99, .8));
 }
 h1 {
 	margin-bottom: 5%;
@@ -48,34 +49,42 @@ h1 {
 	display: flex;
 	justify-content: center;
 	margin-top: 5%;
-	margin-bottom: 10%;
+	/* margin-bottom: 20%; */
 }
 .intervals-png {
 	-webkit-box-shadow: 6px 4px 12px 1px rgba(65, 63, 65, 1);
 	-moz-box-shadow: 6px 4px 12px 1px rgba(65, 63, 65, 1);
 	box-shadow: 6px 4px 12px 1px rgb(65, 63, 65);
 	margin-top: 1%;
+	margin-bottom: 10%;
 }
 .intro-alexa-font {
 	font-family: 'Lato', sans-serif;
 	font-style: italic;
 }
 #learn-more {
-	margin-top: 5%;
+	/* margin-top: 5%; */
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
 	align-items: left;
+	/* width: 60%; */
+
+	border-right: 0.5px solid #a09d9d;
+	padding-top: 6%;
+	padding-bottom: 6%;
+	padding-right: 2%;
+	padding-left: 5%;
 	width: 60%;
-	border: 1px solid #333333;
-	-webkit-box-shadow: 3px 2px 6px 1px rgba(65, 63, 65, 1);
+	text-align: right;
+	/* -webkit-box-shadow: 3px 2px 6px 1px rgba(65, 63, 65, 1);
 	-moz-box-shadow: 3px 2px 6px 1px rgba(65, 63, 65, 1);
 	box-shadow: 3px 2px 6px 1px rgb(65, 63, 65);
-	padding: 1%;
-	background-color: rgb(247, 248, 246);
-	font-size: large;
+	background-color: rgb(247, 248, 246); */
+	font-size: x-large;
 	font-family: 'Open Sans', sans-serif;
 	color: rgb(36, 34, 34);
+	/* margin-bottom: 10%; */
 }
 .learn-more-buttondiv {
 	display: flex;
@@ -84,8 +93,13 @@ h1 {
 }
 #learn-more-outerdiv {
 	display: flex;
-	justify-content: center;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-evenly;
+	/* background-color: hsla(94, 49%, 40%, 0.08); */
+	background-color: hsla(0, 100%, 100%, 0.74);
 }
+
 .learn-more-button {
 	background: radial-gradient(circle, rgba(251, 216, 63, 0.43881302521008403) 0%, rgba(230, 178, 51, 1) 100%);
 	background-color: ivory;
@@ -110,7 +124,47 @@ h1 {
 .learn-more-button:hover {
 	background: radial-gradient(circle, rgba(251, 216, 63, 1) 0%, rgba(230, 178, 51, 1) 100%);
 }
-.charts{
+.chart-alexa-outer-div {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+.alexa-img-div {
+	display: flex;
+
+	justify-content: center;
+	padding: 10%;
+	border-bottom: 0.5px solid #a09d9d;
+}
+.canvas-div {
+	display: flex;
+	justify-content: center;
+	padding-top: 15%;
+}
+.alexa-img {
+	width: 50%;
+	border-radius: 10%;
+}
+.charts {
 	background-color: white;
-	color:white;
+	color: white;
+}
+/* .info-container {
+	margin-bottom: 20%;
+} */
+.footer {
+	background: linear-gradient(to right, rgba(162, 171, 88, .8), rgba(99, 99, 99, .8));
+	height: 30vh;
+}
+.nav-progress-page {
+	background-color: hsla(0, 100%, 100%, 0.74);
+	padding: 2%;
+	font-family: 'Open Sans', sans-serif;
+}
+.charts-progress {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	padding-bottom: 20%;
+	background: linear-gradient(to right, rgba(162, 171, 88, .8), rgba(99, 99, 99, .8));
 }

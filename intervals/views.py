@@ -11,6 +11,9 @@ from django.views.decorators.csrf import csrf_exempt
 def home_page(request):
     return render(request, "intervals/home_page.html")
 
+def progress_details(request):
+    return render(request, "intervals/progress_details.html")    
+
 
 
 from .interval import get_audio_file
