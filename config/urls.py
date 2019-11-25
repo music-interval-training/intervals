@@ -12,4 +12,5 @@ urlpatterns = [
     path('intervals/progress_details', views.progress_details, name='progress_details'), 
     path('alexa', interval_training, name='alexa'),
     path('admin/', admin.site.urls),
+    path('intervals/progress_details', views.progress_details, name='progress_details'),
 ]

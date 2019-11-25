@@ -24,6 +24,12 @@ logger.setLevel(logging.DEBUG)
 def home_page(request):
     return render(request, "intervals/home_page.html")
 
+def progress_details(request):
+    Records = Record.objects.all()
+    return render(request, "intervals/progress_details.html", {
+        'Records': Records,
+    })
+
 
 class LaunchRequestHandler(AbstractRequestHandler):
     """Handler for skill launch."""
@@ -76,7 +82,7 @@ class IntervalGuessIntentHandler(AbstractRequestHandler):
         if is_correct:
             speak_output = f"Your guess was correct"
         else:
-            speak_output = f"You guessed {guess} but the interval was a {interval}"
+            speak_output = f"You guessed {guess} but the interval was a {interval[0]}"
         speak_output = f"{speak_output} Do you want to continue guessing?"
 
         return (

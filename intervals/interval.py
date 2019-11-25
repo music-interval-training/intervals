@@ -16,7 +16,7 @@ TRITONE = ['tritone']
 
 def get_audio_info():
     intervals =[
-        {"interval": MAJOR_SEVENTH, "audio_files": ["Major_2-A-B+.mp3", "Major_2-D-E+.mp3", "Major_2-G%23-A%23.mp3"]},
+        {"interval": MAJOR_SECOND, "audio_files": ["Major_2-A-B+.mp3", "Major_2-D-E+.mp3", "Major_2-G%23-A%23.mp3"]},
         {"interval": MINOR_SECOND, "audio_files": ["Minor_2-A-B-flat+.mp3", "Minor_2-C-C%23+.mp3", "Minor_2-F-F%23+.mp3"]},
         {"interval": MAJOR_THIRD, "audio_files": ["Major_3-D-F%23+.mp3", "Major_3-F%23-A%23.mp3", "Major_3-G-B+.mp3"]}, 
         {"interval": MINOR_THIRD, "audio_files": ["Minor_3-C%23-E.mp3", "Minor_3-F%23-A.mp3", "Minor_3-G%23-B+.mp3"]},
