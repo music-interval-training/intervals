@@ -2,39 +2,110 @@
 {% load static %}
 
 {% block content %}
+<div class="main-page-container">
+    <div id="amazon-root"></div>
+    <script type="text/javascript">
+
+        window.onAmazonLoginReady = function () {
+            amazon.Login.setClientId('amzn1.application-oa2-client.4193140bef1f4d1e957b5e80812c64ca');
+        };
+        (function (d) {
+            console.log('hi')
+            var a = d.createElement('script'); a.type = 'text/javascript';
+            a.async = true; a.id = 'amazon-login-sdk';
+            a.src = 'https://assets.loginwithamazon.com/sdk/na/login1.js';
+            d.getElementById('amazon-root').appendChild(a);
+        })(document);
+
+    </script>
+    <div id="top"></div>
+    <div class="buttons-outerdiv">
+        <div class="login-buttons">
+
+            <a class="amazon-button" href id="LoginWithAmazon"></a>
+            <div class="learn-more-buttondiv"><a href="#learn-more-outerdiv"><button class="learn-more-button"
+                        type="button">Learn
+                        more</button></a>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        document.getElementById('LoginWithAmazon').onclick = function () {
+            options = {}
+            options.scope = 'profile';
+            options.scope_data = {
+                'profile': { 'essential': false }
+            };
+            amazon.Login.authorize(options,
+                'https://www.musicintervaltraining.com/');
+            return false;
+        };
+    </script>
+    <div class="quotes">
+
+        <h1>"Alexa, open music interval training."</h1>
+        <p>Music interval ear training for the aspiring musician
+        </p>
+        <p>An interval is the difference in pitch between
+            two sounds</p>
+
+    </div>
 
 
-<div class="login-buttons">
 
-    <a class="amazon-button" href id="LoginWithAmazon">
+    <div class="intervals-pngdiv">
+        <img class="intervals-png" src="{% static 'images/diatonic_intervals.png' %}" style="width:60%;">
 
-    </a>
+
+    </div>
 </div>
+<div class="info-container">
+    <div id="learn-more-outerdiv">
 
-<div class="quotes">
+        <div id="learn-more">
+            <h3>Music Interval Training</h3>
+            <p style="text-indent: 2%;">This app will help you master identifying different music interval patterns. You
+                will hear two notes played from
+                Alexa and guess the interval played. This application will keep a score of correct and incorrect answers
+                so
+                that
+                you can see your progress and identify the most challenging intervals.</p>
+            <br>
+            <p style="border-bottom: 0.5px solid #a09d9d;"></p>
+            <h3>How to use:</h3>
+            <div style="text-indent: 2%;">
+                <p>To Get Started: Say, "Alexa, open Music Interval Training"</p>
+                <p>Alexa will prompt you whether to play a random music interval or not</p>
+                <p>You will guess the type of interval played and Alexa will confirm whether correct or not.</p>
+                <p>You will be able to view your progress on this site through our dynamic charts</p>
+            </div>
+            <br>
+            <p style="border-bottom: 0.5px solid #a09d9d;"></p>
+            <h4>Start by Saying:</h4>
+            <div class="intro-alexa-font">
+                <p>"Alexa, open Music Interval Training"</p>
+                <p>"Alexa, play me an interval"</p>
+            </div>
+        </div>
 
-    <!-- <div class="music-notes-div">
-        <p class="music-notes1">&#127925;</p>
-        <p class="music-notes2">&nbsp&nbsp&nbsp&nbsp&nbsp&#127926;</p>
-        <p class="music-notes3">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&#127925;</p>
-        <p class="music-notes4">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&#127926;</p>
+        <div class="chart-alexa-outer-div">
+            <div class="alexa-img-div">
+                <img src="static/images/alexa.jpg" class="alexa-img">
+            </div>
 
-    </div> -->
+            <div class="canvas-div">
+                <canvas id="myChart" width="400" height="300" class="charts" style="padding: 25px;"></canvas>
+            </div>
+        </div>
 
-
-    <h1>"Alexa, launch music interval training."</h1>
-    <p>Music interval ear training for the aspiring musician
-    </p>
-    <p>An interval is the difference in pitch between
-        two sounds</p>
+    </div>
 
 </div>
+<footer class="footer">
+    <a class="learn-more-button" href="#top">Back to top</a>
 
+    <a href="{% url 'progress_details' %}">progress</a>
+</footer>
 
-
-<div class="intervals-div">
-    <img class="intervals-png" src="static/images/diatonic_intervals.png" width="60%">
-
-</div>
 
 {% endblock %}
