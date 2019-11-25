@@ -1,19 +1,28 @@
+var data1 = ['12', '19', '3', '5', '2', '3', '15', '10', '3', '7', '0', '5'];
+var data2 = ['8', '12', '3', '0', '2', '1', '10', '8', '3', '6', '0', '4'];
 
 var ctx = document.getElementById('myChart');
+ctx.height = 500;
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['Ma2', 'Ma3', 'P4', 'P5', 'Mi6', 'Octave'],
+        labels: ['Minor 2nd', 'Major 2nd', 'Minor 3rd', 'Major 3rd', 'Perfect 4th', 'Tritone', 'Perfect 5th', 'Minor 6th', 'Major 6th', 'Minor 7th', 'Major 7th', 'Octave'],
         datasets: [{
             label: '# of attempts',
-            data: [12, 19, 3, 5, 2, 3],
+            data: data1,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(255, 99, 132, 0.4)',
                 'rgba(255, 99, 132, 0.6)',
                 'rgba(75, 192, 192, 0.2)',
                 'rgba(75, 192, 192, 0.4)',
-                'rgba(75, 192, 192, 0.6)'
+                'rgba(75, 192, 192, 0.6)',
+                'rgba(255, 99, 132, 0.6)',
+                'rgba(255, 99, 132, 0.6)',
+                'rgba(255, 99, 132, 0.6)',
+                'rgba(255, 99, 132, 0.6)',
+                'rgba(255, 99, 132, 0.6)',
+                'rgba(255, 99, 132, 0.6)'
             ],
             borderColor: [
                 'rgba(255, 99, 132, 1)',
@@ -21,7 +30,13 @@ var myChart = new Chart(ctx, {
                 'rgba(255, 99, 132, 1)',
                 'rgba(75, 192, 192, 1)',
                 'rgba(75, 192, 192, 1)',
-                'rgba(75, 192, 192, 1)'
+                'rgba(75, 192, 192, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(255, 99, 132, 1)',
             ],
             borderWidth: 1
         }]
@@ -30,23 +45,74 @@ var myChart = new Chart(ctx, {
         responsive: true,
         maintainAspectRatio: false,
         scales: {
+            xAxes: [{
+                ticks: {
+                    fontSize: 25,
+                }
+            }],
             yAxes: [{
                 ticks: {
+                    fontSize: 20,
                     beginAtZero: true
                 }
             }]
         },
     }
-    // options: {
-    //     scales: {
-    //         yAxes: [{
-    //             ticks: {
-    //                 beginAtZero: true
-    //             }
-    //         }]
-    //     }
-    // }
 });
+
+
+
+
+
+
+// var ctx = document.getElementById('myChart');
+// var myChart = new Chart(ctx, {
+//     type: 'bar',
+//     data: {
+//         labels: ['Ma2', 'Ma3', 'P4', 'P5', 'Mi6', 'Octave'],
+//         datasets: [{
+//             label: '# of attempts',
+//             data: [12, 19, 3, 5, 2, 3],
+//             backgroundColor: [
+//                 'rgba(255, 99, 132, 0.2)',
+//                 'rgba(255, 99, 132, 0.4)',
+//                 'rgba(255, 99, 132, 0.6)',
+//                 'rgba(75, 192, 192, 0.2)',
+//                 'rgba(75, 192, 192, 0.4)',
+//                 'rgba(75, 192, 192, 0.6)'
+//             ],
+//             borderColor: [
+//                 'rgba(255, 99, 132, 1)',
+//                 'rgba(255, 99, 132, 1)',
+//                 'rgba(255, 99, 132, 1)',
+//                 'rgba(75, 192, 192, 1)',
+//                 'rgba(75, 192, 192, 1)',
+//                 'rgba(75, 192, 192, 1)'
+//             ],
+//             borderWidth: 1
+//         }]
+//     },
+//     options: {
+//         responsive: true,
+//         maintainAspectRatio: false,
+//         scales: {
+//             yAxes: [{
+//                 ticks: {
+//                     beginAtZero: true
+//                 }
+//             }]
+//         },
+//     }
+//     // options: {
+//     //     scales: {
+//     //         yAxes: [{
+//     //             ticks: {
+//     //                 beginAtZero: true
+//     //             }
+//     //         }]
+//     //     }
+//     // }
+// });
 
 
 

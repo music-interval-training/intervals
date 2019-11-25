@@ -70,13 +70,13 @@ h1 {
 	align-items: left;
 	/* width: 60%; */
 
-	border-right: 0.5px solid #a09d9d;
+	border-left: 0.5px solid #a09d9d;
 	padding-top: 6%;
 	padding-bottom: 6%;
 	padding-right: 2%;
-	padding-left: 5%;
+	padding-left: 1%;
 	width: 60%;
-	text-align: right;
+	text-align: left;
 	/* -webkit-box-shadow: 3px 2px 6px 1px rgba(65, 63, 65, 1);
 	-moz-box-shadow: 3px 2px 6px 1px rgba(65, 63, 65, 1);
 	box-shadow: 3px 2px 6px 1px rgb(65, 63, 65);
@@ -136,11 +136,11 @@ h1 {
 	padding: 10%;
 	border-bottom: 0.5px solid #a09d9d;
 }
-.canvas-div {
+/* .canvas-div {
 	display: flex;
 	justify-content: center;
 	padding-top: 15%;
-}
+} */
 .alexa-img {
 	width: 50%;
 	border-radius: 10%;
