@@ -16,5 +16,6 @@ class Record(models.Model):
     
 """
 @property decorator is just a convenient way to call the property() function, which is built in to Python.
-This function returns a special descriptor object which allows direct access to the method's computed value
+This function returns a special descriptor object which allows direct access to the method's computed value, 
+in this case, it is a boolean.
 """

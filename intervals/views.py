@@ -26,9 +26,10 @@ def home_page(request):
 
 def progress_details(request):
     Records = Record.objects.all()
-    return render(request, "intervals/progress_details.html", {
+    return render(request, "intervals/progress_details.html"{
         'Records': Records,
     })
+
 
 
 class LaunchRequestHandler(AbstractRequestHandler):
