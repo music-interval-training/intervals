@@ -2,18 +2,21 @@
 {% load static %}
 
 {% block content %}
-<div class="main-container">
-    <nav class="nav-progress-page">
-        <h2>Music Interval Training</h2>
+<div class="main-container-progress">
+    <a class="nav-link" href="/" style="text-decoration: none;">
+        <nav class="nav-progress-page">
+            <h1 style="font-style: italic; font-size: xx-large;">Music Interval Training</h1>
 
-    </nav>
-    <div class="charts-progress">
-        <div class="canvas-div">
-            <canvas id="myChart" width="400" height="300" class="charts" style="padding: 25px;"></canvas>
-        </div>
-        <div class="canvas-div">
-            <canvas id="myChart" width="400" height="300" class="charts" style="padding: 25px;"></canvas>
+        </nav>
+    </a>
+    <div class="charts-progress-outerdiv">
+        <div class="charts-progress">
+            <div class="canvas-div progress-details">
+                <canvas id="myChart"></canvas>
+            </div>
+            <div class="canvas-div progress-details">
+                <canvas id="myChart"></canvas>
+            </div>
         </div>
     </div>
-</div>
-{% endblock %}
+    {% endblock %}
