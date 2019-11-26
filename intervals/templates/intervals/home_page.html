@@ -43,11 +43,11 @@
     </script>
     <div class="quotes">
 
-        <h1>"Alexa, open music interval training."</h1>
-        <p>Music interval ear training for the aspiring musician
+        <h1 style="margin-bottom: 5%">"Alexa, open music interval training."</h1>
+        <p>Music interval training for the aspiring musician:
         </p>
-        <p>An interval is the difference in pitch between
-            two sounds</p>
+        <p>an interval is the difference in pitch between
+            two sounds.</p>
 
     </div>
 
@@ -59,28 +59,41 @@
 
     </div>
 </div>
+<div class="learn-more-button-outerdiv">
+    <a class="learn-more-button" href="#top">Back to top</a>
+</div>
 <div class="info-container">
     <div id="learn-more-outerdiv">
+        <div class="chart-alexa-outer-div">
+            <div class="alexa-img-div">
+                <img src="static/images/alexa.jpg" class="alexa-img">
+                <p style="font-style: italic; margin-bottom: 5%;">"Alexa, open Music Interval Training"</p>
+            </div>
+
+            <div class="canvas-div">
+                <canvas id="myChart" class="charts"></canvas>
+            </div>
+        </div>
 
         <div id="learn-more">
             <h3>Music Interval Training</h3>
-            <p style="text-indent: 2%;">This app will help you master identifying different music interval patterns. You
+            <p>This app will help you master identifying different music interval patterns. You
                 will hear two notes played from
                 Alexa and guess the interval played. This application will keep a score of correct and incorrect answers
                 so
                 that
                 you can see your progress and identify the most challenging intervals.</p>
             <br>
-            <p style="border-bottom: 0.5px solid #a09d9d;"></p>
-            <h3>How to use:</h3>
-            <div style="text-indent: 2%;">
+            <p style="border-bottom:0.5px solid #a09d9d;"></p>
+            <h3 style="padding-top: 5%;">How to use:</h3>
+            <div>
                 <p>To Get Started: Say, "Alexa, open Music Interval Training"</p>
                 <p>Alexa will prompt you whether to play a random music interval or not</p>
                 <p>You will guess the type of interval played and Alexa will confirm whether correct or not.</p>
                 <p>You will be able to view your progress on this site through our dynamic charts</p>
             </div>
             <br>
-            <p style="border-bottom: 0.5px solid #a09d9d;"></p>
+            <p style="border-bottom:0.5px solid #a09d9d;"></p>
             <h4>Start by Saying:</h4>
             <div class="intro-alexa-font">
                 <p>"Alexa, open Music Interval Training"</p>
@@ -88,21 +101,12 @@
             </div>
         </div>
 
-        <div class="chart-alexa-outer-div">
-            <div class="alexa-img-div">
-                <img src="static/images/alexa.jpg" class="alexa-img">
-            </div>
-
-            <div class="canvas-div">
-                <canvas id="myChart" width="400" height="300" class="charts" style="padding: 25px;"></canvas>
-            </div>
-        </div>
 
     </div>
 
 </div>
 <footer class="footer">
-    <a class="learn-more-button" href="#top">Back to top</a>
+
 
     <a href="{% url 'progress_details' %}">progress</a>
 </footer>

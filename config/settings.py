@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'whitenoise.runserver_nostatic', 
+    'whitenoise.runserver_nostatic',
 ]
 
 MIDDLEWARE = [
@@ -88,7 +88,6 @@ DATABASES = {
         'PASSWORD': os.getenv("DATABASE_PASSWORD"),
         'HOST': '127.0.0.1',
         'PORT': '5432',
-
     }
 }
 
@@ -130,4 +129,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
