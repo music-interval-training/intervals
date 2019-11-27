@@ -3,7 +3,7 @@ var data1 = ['12', '19', '3', '5', '2', '3', '15', '10', '3', '7', '0', '5'];
 var data2 = ['8', '12', '3', '0', '2', '1', '10', '8', '3', '6', '0', '4'];
 
 var ctx = document.getElementById('myChart');
-ctx.height = 500;
+ctx.height = 400;
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
@@ -48,12 +48,12 @@ var myChart = new Chart(ctx, {
         scales: {
             xAxes: [{
                 ticks: {
-                    fontSize: 25,
+                    fontSize: 15,
                 }
             }],
             yAxes: [{
                 ticks: {
-                    fontSize: 20,
+                    fontSize: 10,
                     beginAtZero: true
                 }
             }]
