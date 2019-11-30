@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "1a6e062a6d98d1852b9a2bcaaf714128750dec7187a9ce7ff1247b2bc2a6e51e"
+            "sha256": "2ecce77b7c57c80cfa0fbe250bcf5ccbeed82a82e368770d5ee47436edd8ac96"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -118,6 +118,13 @@
             ],
             "index": "pypi",
             "version": "==3.0.4"
+        },
+        "chartjs": {
+            "hashes": [
+                "sha256:9a58d91b099822999a1ec4fa0882b984decc0c488b3d18ea5585a78204238109"
+            ],
+            "index": "pypi",
+            "version": "==1.2"
         },
         "cryptography": {
             "hashes": [
