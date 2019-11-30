@@ -213,8 +213,10 @@ sb.add_request_handler(SessionEndedRequestHandler())
 sb.add_exception_handler(CatchAllExceptionHandler())
 # Add response interceptor to the skill.
 sb.add_global_request_interceptor(RequestLogger())
-sb.add_global_response_interceptor(ResponseLogger());
+sb.add_global_response_interceptor(ResponseLogger())
 
 
 skill = sb.create()
+
+
 
