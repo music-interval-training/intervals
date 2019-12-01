@@ -8,7 +8,8 @@ class Record(models.Model):
     audio_url = models.URLField()
     is_correct = models.IntegerField(default=0)
     def __str__(self):
-        return self.interval
+        return self.interval + " " + str(self.is_correct)
+
     def save(self, *args, **kwargs):
         if self.interval == self.guess:
             self.is_correct = 1

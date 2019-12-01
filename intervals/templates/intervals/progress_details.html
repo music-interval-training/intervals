@@ -6,15 +6,90 @@
     <a class="nav-link" href="/" style="text-decoration: none;">
         <nav class="nav-progress-page">
             <h1 class="nav-title">Music Interval Training</h1>
-
         </nav>
     </a>
-
     <div class="charts-progress">
         <div class="progress-details">
             <canvas id="myChart" class="mychart"></canvas>
         </div>
-
     </div>
 </div>
+<script>
+var numberWithCommas = function(x) {
+    if (Math.floor(x) === x) {
+        return x;
+    }
+  };
+
+var num_incorrect = [{% for interval in chart_data.values %}{{ interval.incorrect }}, {% endfor %}];
+var num_correct = [{% for interval in chart_data.values %}{{ interval.correct }}, {% endfor %}];
+    
+var canvas = document.getElementById('myChart');
+var data = {
+  labels: [{% for interval in chart_data.values %}"{{ interval.interval }}", {% endfor %}],
+  datasets: [
+    {
+        label: 'Correct',
+        data: num_correct,   
+        backgroundColor: 'rgba(0, 255, 125, 1)',
+    },  
+    {   
+        label: 'Incorrect',
+        data: num_incorrect,
+        backgroundColor: 'rgba(255, 99, 132, 0.4)',
+    }, 
+  ]
+}
+var options = {
+  legend: {
+    display: true,
+  },
+  tooltips: {
+    callback: {
+        label: function(tooltipItem,data1,data2) {
+            var label = data.datasets[tooltipItem.datasetIndex].label || '';
+            label = boo;
+            return label
+}}},
+  scales: {
+    yAxes: [{
+      stacked: true,
+      scaleFontSize: 40,
+      scaleLabel: {
+        display: true,
+      },
+      ticks: {
+        max: {{ max_attempts }},
+        min: 0,
+        beginAtZero: true,
+        callback: function(value) {
+          return numberWithCommas(value);
+        }
+      },
+    }],
+    xAxes: [{
+      id: "bar-x-axis1",
+      stacked: true,
+      barThickness: 30,     
+    }, {
+      id: "bar-x-axis2",
+      stacked: true,
+      display: false,      
+      barThickness: 10,
+    }, ],
+  },
+  plugins: {
+    datalabels: {
+      anchor: 'end',
+      align: 'top'   
+    }
+  }
+};
+
+var myBarChart = Chart.Bar(canvas, {
+  data: data,
+  options: options
+});
+
+</script>
 {% endblock %}
