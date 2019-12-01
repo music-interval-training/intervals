@@ -29,14 +29,18 @@ def home_page(request):
     return render(request, "intervals/home_page.html")
 
 def progress_details(request):
-    records = Record.objects.all().values('interval').annotate(attempts=Count('interval'), correct=Count('is_correct'))          
+    correct_attempts = Record.objects.filter(is_correct=1).values('interval').annotate(correct=Count('interval'))
+    incorrect_attempts = Record.objects.filter(is_correct=0).values('interval').annotate(incorrect=Count('interval'))
+
     chart_data = OrderedDict()
     for x in ORDERED_INTERVALS:
-        if records.filter(interval=x).exists():
-            chart_data[x] = records.get(interval=x)
-        else:
-            chart_data[x] = {'interval': x, 'attempts':0, 'correct': 0}
-    max_attempts = records.aggregate(Max('attempts'))['attempts__max']
+        chart_data[x] = {'interval': x, 'correct':0, 'incorrect': 0}
+        if correct_attempts.filter(interval=x).exists():
+            chart_data[x].update(correct_attempts.get(interval=x))
+        if incorrect_attempts.filter(interval=x).exists():
+            chart_data[x].update(incorrect_attempts.get(interval=x))
+
+    max_attempts = Record.objects.values('interval').annotate(attempts=Count('interval')).aggregate(Max('attempts'))['attempts__max']
     return render(request, "intervals/progress_details.html", {
         'chart_data': chart_data,
         'max_attempts': max_attempts,

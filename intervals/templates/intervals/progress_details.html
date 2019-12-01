@@ -15,57 +15,45 @@
     </div>
 </div>
 <script>
+var numberWithCommas = function(x) {
+    if (Math.floor(x) === x) {
+        return x;
+    }
+  };
 
-var attempts = [{% for interval in chart_data.values %}{{ interval.attempts }}{% endfor %}];
-var num_correct = [{% for interval in chart_data.values %}{{ interval.correct }}{% endfor %}];
-
-function numberWrong(i) {
-       return (attempts[i] - num_correct[i])
-}
+var num_incorrect = [{% for interval in chart_data.values %}{{ interval.incorrect }}, {% endfor %}];
+var num_correct = [{% for interval in chart_data.values %}{{ interval.correct }}, {% endfor %}];
     
-
 var canvas = document.getElementById('myChart');
 var data = {
-  labels: [{% for interval in chart_data.keys %}{{ interval.interval }}{% endfor %}];
-  datasets: [{   
-    data: attempts,
-    backgroundColor: 'rgba(255, 99, 132, 0.4)',
-    // tooltips: {
-    //     callback: {
-    //         label: function(tooltipItem, data1,data2) {
-    //             var label = data.datasets[tooltipItem.datasetIndex].label
-    //             label = data1[i] - data2[i];
-    //             return label;
-    // }},
-    datalabels: {
-      display: false,
-    },
-  }, {
-    data: num_correct,   
-    datalabels: {
-      display: true},
-    backgroundColor: 'rgba(0, 255, 125, 1)',
-  },  
+  labels: [{% for interval in chart_data.values %}"{{ interval.interval }}", {% endfor %}],
+  datasets: [
+    {
+        label: 'Correct',
+        data: num_correct,   
+        backgroundColor: 'rgba(0, 255, 125, 1)',
+    },  
+    {   
+        label: 'Incorrect',
+        data: num_incorrect,
+        backgroundColor: 'rgba(255, 99, 132, 0.4)',
+    }, 
   ]
 }
-var option = {
+var options = {
   legend: {
     display: true,
   },
   tooltips: {
-    //   enabled:false,
     callback: {
         label: function(tooltipItem,data1,data2) {
             var label = data.datasets[tooltipItem.datasetIndex].label || '';
-            // label = (data1[i] - data2[i]);
             label = boo;
             return label
 }}},
-//   tooltips: {
-//     enabled: true,
-//   },
   scales: {
     yAxes: [{
+      stacked: true,
       scaleFontSize: 40,
       scaleLabel: {
         display: true,
@@ -73,10 +61,9 @@ var option = {
       ticks: {
         max: {{ max_attempts }},
         min: 0,
-        stepSize: 2,
         beginAtZero: true,
         callback: function(value) {
-          return value + " "
+          return numberWithCommas(value);
         }
       },
     }],
@@ -101,7 +88,7 @@ var option = {
 
 var myBarChart = Chart.Bar(canvas, {
   data: data,
-  options: option
+  options: options
 });
 
 </script>
