@@ -6,15 +6,103 @@
     <a class="nav-link" href="/" style="text-decoration: none;">
         <nav class="nav-progress-page">
             <h1 class="nav-title">Music Interval Training</h1>
-
         </nav>
     </a>
-
     <div class="charts-progress">
         <div class="progress-details">
             <canvas id="myChart" class="mychart"></canvas>
         </div>
-
     </div>
 </div>
+<script>
+
+var attempts = [{% for interval in chart_data.values %}{{ interval.attempts }}{% endfor %}];
+var num_correct = [{% for interval in chart_data.values %}{{ interval.correct }}{% endfor %}];
+
+function numberWrong(i) {
+       return (attempts[i] - num_correct[i])
+}
+    
+
+var canvas = document.getElementById('myChart');
+var data = {
+  labels: [{% for interval in chart_data.keys %}{{ interval.interval }}{% endfor %}];
+  datasets: [{   
+    data: attempts,
+    backgroundColor: 'rgba(255, 99, 132, 0.4)',
+    // tooltips: {
+    //     callback: {
+    //         label: function(tooltipItem, data1,data2) {
+    //             var label = data.datasets[tooltipItem.datasetIndex].label
+    //             label = data1[i] - data2[i];
+    //             return label;
+    // }},
+    datalabels: {
+      display: false,
+    },
+  }, {
+    data: num_correct,   
+    datalabels: {
+      display: true},
+    backgroundColor: 'rgba(0, 255, 125, 1)',
+  },  
+  ]
+}
+var option = {
+  legend: {
+    display: true,
+  },
+  tooltips: {
+    //   enabled:false,
+    callback: {
+        label: function(tooltipItem,data1,data2) {
+            var label = data.datasets[tooltipItem.datasetIndex].label || '';
+            // label = (data1[i] - data2[i]);
+            label = boo;
+            return label
+}}},
+//   tooltips: {
+//     enabled: true,
+//   },
+  scales: {
+    yAxes: [{
+      scaleFontSize: 40,
+      scaleLabel: {
+        display: true,
+      },
+      ticks: {
+        max: {{ max_attempts }},
+        min: 0,
+        stepSize: 2,
+        beginAtZero: true,
+        callback: function(value) {
+          return value + " "
+        }
+      },
+    }],
+    xAxes: [{
+      id: "bar-x-axis1",
+      stacked: true,
+      barThickness: 30,     
+    }, {
+      id: "bar-x-axis2",
+      stacked: true,
+      display: false,      
+      barThickness: 10,
+    }, ],
+  },
+  plugins: {
+    datalabels: {
+      anchor: 'end',
+      align: 'top'   
+    }
+  }
+};
+
+var myBarChart = Chart.Bar(canvas, {
+  data: data,
+  options: option
+});
+
+</script>
 {% endblock %}

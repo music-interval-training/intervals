@@ -1,4 +1,7 @@
+from collections import OrderedDict
 from django.shortcuts import render
+from django.db.models import Count, Max
+
 
 import logging
 from ask_sdk_core.utils import is_request_type
@@ -20,14 +23,23 @@ sb = SkillBuilder()
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
+ORDERED_INTERVALS = ['minor 2nd', 'major 2nd', 'minor 3rd', 'major 3rd', 'perfect 4th', 'tritone', 'perfect 5th', 'minor 6th', 'major 6th', 'minor 7th', 'major 7th', 'octave' ]
 
 def home_page(request):
     return render(request, "intervals/home_page.html")
 
 def progress_details(request):
-    Records = Record.objects.all()
+    records = Record.objects.all().values('interval').annotate(attempts=Count('interval'), correct=Count('is_correct'))          
+    chart_data = OrderedDict()
+    for x in ORDERED_INTERVALS:
+        if records.filter(interval=x).exists():
+            chart_data[x] = records.get(interval=x)
+        else:
+            chart_data[x] = {'interval': x, 'attempts':0, 'correct': 0}
+    max_attempts = records.aggregate(Max('attempts'))['attempts__max']
     return render(request, "intervals/progress_details.html", {
-        'Records': Records,
+        'chart_data': chart_data,
+        'max_attempts': max_attempts,
     })
 
 
