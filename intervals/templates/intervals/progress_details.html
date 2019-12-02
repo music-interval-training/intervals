@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+
 <div class="main-container-progress">
     <a class="nav-link" href="/" style="text-decoration: none;">
         <nav class="nav-progress-page">
@@ -44,13 +45,6 @@ var options = {
   legend: {
     display: true,
   },
-  tooltips: {
-    callback: {
-        label: function(tooltipItem,data1,data2) {
-            var label = data.datasets[tooltipItem.datasetIndex].label || '';
-            label = boo;
-            return label
-}}},
   scales: {
     yAxes: [{
       stacked: true,
@@ -90,6 +84,25 @@ var myBarChart = Chart.Bar(canvas, {
   data: data,
   options: options
 });
+
+
+// logic to get new data
+var getData = function() {
+  $.ajax({
+    url: "{% url 'chart_data' %}",
+    success: function(data) {
+        console.log(data);
+      myBarChart.data.datasets[0].data = data.correct;
+      myBarChart.data.datasets[1].data = data.incorrect;  
+      myBarChart.options.scales.yAxes[0].ticks.max = data.max_attempts;    
+      // re-render the chart
+      myBarChart.update();
+    }
+  });
+};
+
+// get new data every 3 seconds
+setInterval(getData, 3000);
 
 </script>
 {% endblock %}
