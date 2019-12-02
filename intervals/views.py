@@ -27,8 +27,6 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
 ORDERED_INTERVALS = ['minor 2nd', 'major 2nd', 'minor 3rd', 'major 3rd', 'perfect 4th', 'tritone', 'perfect 5th', 'minor 6th', 'major 6th', 'minor 7th', 'major 7th', 'octave' ]
-CORRECT_GUESS_RESPONSES = ['Great job! You guessed correct', 'Well done', 'You mastered that one', 'Way to kill it Beethoven', 'Nice you got it right']
-INCORRECT_GUESS_RESPONSES = [f"You guessed {guess} but the interval was a {interval[0]}",  f"Epic fail. you guessed {guess} but it was a {interval[0]}", f"Nice try but that was wrong. it was a {interval[0]} but you guessed {guess}", f"next time you'll get it right but the correct interval was a {interval[0]} you guessed {guess}"]
 
 def home_page(request):
     return render(request, "intervals/home_page.html")
@@ -124,10 +122,12 @@ class IntervalGuessIntentHandler(AbstractRequestHandler):
             audio_url=audio_url
         )
         is_correct = guess in interval
+        correct_guess_responses = ['Great job! You guessed correct', 'Well done', 'You mastered that one', 'Way to kill it Beethoven', 'Nice you got it right']
         if is_correct:
-            speak_output = choice(CORRECT_GUESS_RESPONSES)
+            speak_output = choice(correct_guess_responses)
         else:
-            speak_output = choice(INCORRECT_GUESS_RESPONSES)
+            incorrect_guess_responses = [f"You guessed {guess} but the interval was a {interval[0]}",  f"Epic fail. you guessed {guess} but it was a {interval[0]}", f"Nice try but that was wrong. it was a {interval[0]} but you guessed {guess}", f"next time you'll get it right but the correct interval was a {interval[0]} you guessed {guess}"]
+            speak_output = choice(incorrect_guess_responses)
         speak_output = f"{speak_output} Do you want to continue?"
 
         return (
