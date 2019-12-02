@@ -1,6 +1,9 @@
 from collections import OrderedDict
+from random import choice
 from django.shortcuts import render
 from django.db.models import Count, Max
+from django.views.generic import View
+from django.http import JsonResponse
 
 
 import logging
@@ -24,9 +27,12 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
 ORDERED_INTERVALS = ['minor 2nd', 'major 2nd', 'minor 3rd', 'major 3rd', 'perfect 4th', 'tritone', 'perfect 5th', 'minor 6th', 'major 6th', 'minor 7th', 'major 7th', 'octave' ]
+CORRECT_GUESS_RESPONSES = ['Great job! You guessed correct', 'Well done', 'You mastered that one', 'Way to kill it Beethoven', 'Nice you got it right']
+INCORRECT_GUESS_RESPONSES = [f"You guessed {guess} but the interval was a {interval[0]}",  f"Epic fail. you guessed {guess} but it was a {interval[0]}", f"Nice try but that was wrong. it was a {interval[0]} but you guessed {guess}", f"next time you'll get it right but the correct interval was a {interval[0]} you guessed {guess}"]
 
 def home_page(request):
     return render(request, "intervals/home_page.html")
+        
 
 def progress_details(request):
     correct_attempts = Record.objects.filter(is_correct=1).values('interval').annotate(correct=Count('interval'))
@@ -45,6 +51,29 @@ def progress_details(request):
         'chart_data': chart_data,
         'max_attempts': max_attempts,
     })
+
+
+class ChartData(View):
+    def get(self, request):
+        correct_attempts = Record.objects.filter(is_correct=1).values('interval').annotate(correct=Count('interval'))
+        incorrect_attempts = Record.objects.filter(is_correct=0).values('interval').annotate(incorrect=Count('interval'))
+
+        chart_data = OrderedDict()
+        for x in ORDERED_INTERVALS:
+            chart_data[x] = {'interval': x, 'correct':0, 'incorrect': 0}
+            if correct_attempts.filter(interval=x).exists():
+                chart_data[x].update(correct_attempts.get(interval=x))
+            if incorrect_attempts.filter(interval=x).exists():
+                chart_data[x].update(incorrect_attempts.get(interval=x))
+
+        correct = [x['correct'] for x in chart_data.values()]
+        incorrect = [x['incorrect'] for x in chart_data.values()]
+        max_attempts = Record.objects.values('interval').annotate(attempts=Count('interval')).aggregate(Max('attempts'))['attempts__max']
+        return JsonResponse({
+            'correct': correct,
+            'incorrect': incorrect,
+            'max_attempts': max_attempts
+        })
 
 
 class LaunchRequestHandler(AbstractRequestHandler):
@@ -96,10 +125,10 @@ class IntervalGuessIntentHandler(AbstractRequestHandler):
         )
         is_correct = guess in interval
         if is_correct:
-            speak_output = f"Your guess was correct"
+            speak_output = choice(CORRECT_GUESS_RESPONSES)
         else:
-            speak_output = f"You guessed {guess} but the interval was a {interval[0]}"
-        speak_output = f"{speak_output} Do you want to continue guessing?"
+            speak_output = choice(INCORRECT_GUESS_RESPONSES)
+        speak_output = f"{speak_output} Do you want to continue?"
 
         return (
                 handler_input.response_builder
@@ -233,6 +262,4 @@ sb.add_global_response_interceptor(ResponseLogger())
 
 
 skill = sb.create()
-
-
 
