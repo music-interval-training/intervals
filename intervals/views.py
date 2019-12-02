@@ -126,7 +126,7 @@ class IntervalGuessIntentHandler(AbstractRequestHandler):
         if is_correct:
             speak_output = choice(correct_guess_responses)
         else:
-            incorrect_guess_responses = [f"You guessed {guess} but the interval was a {interval[0]}",  f"Epic <emphasis level="strong"> fail <say-as interpret-as="expletive"> you guessed {guess} but it was a {interval[0]}", f"Nice try <amazon:effect name="whispered"> but that was wrong. it was a {interval[0]} but you guessed {guess}", f"next time you'll get it right but the correct interval was a {interval[0]} you guessed {guess}"]
+            incorrect_guess_responses = [f"You guessed {guess} but the interval was a {interval[0]}",  f"Epic <emphasis level='strong'> fail <say-as interpret-as='expletive'> you guessed {guess} but it was a {interval[0]}", f"Nice try <amazon:effect name='whispered'> but that was wrong. it was a {interval[0]} but you guessed {guess}", f"next time you will get it right but the correct interval was a {interval[0]} you guessed {guess}"]
             speak_output = choice(incorrect_guess_responses)
         speak_output = f"{speak_output} Do you want to continue?"
 
