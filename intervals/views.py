@@ -122,11 +122,11 @@ class IntervalGuessIntentHandler(AbstractRequestHandler):
             audio_url=audio_url
         )
         is_correct = guess in interval
-        correct_guess_responses = ['Great job! You guessed correct', 'Well done', 'You mastered that one', 'Way to kill it Beethoven', 'Nice you got it right']
+        correct_guess_responses = ['Great job! <emphasis level="strong"> You guessed correct', 'Well done <emphasis level="strong">', 'You mastered <emphasis level="strong"> that one', 'Way to kill <emphasis level="strong"> it Beethoven <emphasis level="strong">', 'Nice <emphasis level="strong"> you got it right']
         if is_correct:
             speak_output = choice(correct_guess_responses)
         else:
-            incorrect_guess_responses = [f"You guessed {guess} but the interval was a {interval[0]}",  f"Epic fail. you guessed {guess} but it was a {interval[0]}", f"Nice try but that was wrong. it was a {interval[0]} but you guessed {guess}", f"next time you'll get it right but the correct interval was a {interval[0]} you guessed {guess}"]
+            incorrect_guess_responses = [f"You guessed {guess} but the interval was a {interval[0]}",  f"Epic <emphasis level="strong"> fail <say-as interpret-as="expletive"> you guessed {guess} but it was a {interval[0]}", f"Nice try <amazon:effect name="whispered"> but that was wrong. it was a {interval[0]} but you guessed {guess}", f"next time you'll get it right but the correct interval was a {interval[0]} you guessed {guess}"]
             speak_output = choice(incorrect_guess_responses)
         speak_output = f"{speak_output} Do you want to continue?"
 
