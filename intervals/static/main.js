@@ -13,13 +13,7 @@ var data = {
     label: 'Incorrect', 
     data: data1,
     backgroundColor: 'rgba(255, 99, 132, 0.4)',
-    // tooltips: {
-    //     callback: {
-    //         label: function(tooltipItem, data1,data2) {
-    //             var label = data.datasets[tooltipItem.datasetIndex].label
-    //             label = data1[i] - data2[i];
-    //             return label;
-    // }},
+ 
     datalabels: {
       display: false,
     },
