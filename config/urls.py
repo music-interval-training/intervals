@@ -9,8 +9,8 @@ interval_training = SkillAdapter.as_view(
 # create homepage view 
 urlpatterns = [
     path('', views.home_page, name='home_page'),
-    path('intervals/progress_details', views.progress_details, name='progress_details'), 
     path('alexa', interval_training, name='alexa'),
     path('admin/', admin.site.urls),
     path('intervals/progress_details', views.progress_details, name='progress_details'),
+    path('intervals/chartdata', views.ChartData.as_view(), name='chart_data'),
 ]
