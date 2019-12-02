@@ -105,4 +105,48 @@ var getData = function() {
 setInterval(getData, 3000);
 
 </script>
+
+
+<script>
+function playItHere(e, link) {
+  var audio = document.createElement("audio");
+  var src = document.createElement("source");
+  src.src = link.href;
+  audio.appendChild(src);
+  audio.play();
+  e.preventDefault();
+}
+</script>
+
+<div class="intervals-intro">
+  <p class="intervals-introp">To hear an interval, click on the buttons below!</p>
+</div>
+<div class="intervals">
+  <a class="interval" href="https://cohort-6-intervals.s3.amazonaws.com/Minor_2-A-B-flat+.mp3"
+    onclick="playItHere(event, this)">m2</a>
+  <a class="interval" href="https://cohort-6-intervals.s3.amazonaws.com/Major_2-A-B+.mp3"
+    onclick="playItHere(event, this)">M2</a>
+  <a class="interval" href="https://cohort-6-intervals.s3.amazonaws.com/Minor_3-C%23-E.mp3"
+    onclick="playItHere(event, this)">m3</a>
+  <a class="interval" href="https://cohort-6-intervals.s3.amazonaws.com/Major_3-D-F%23+.mp3"
+    onclick="playItHere(event, this)">M3</a>
+  <a class="interval" href="https://cohort-6-intervals.s3.amazonaws.com/Perfect_4-A-D.mp3"
+    onclick="playItHere(event, this)">P4</a>
+  <a class="interval" href="https://cohort-6-intervals.s3.amazonaws.com/Tritone_D-G%23.mp3"
+    onclick="playItHere(event, this)">Tritone</a>
+  <a class="interval" href="https://cohort-6-intervals.s3.amazonaws.com/Perfect_5-D-A.mp3"
+    onclick="playItHere(event, this)">P5</a>
+  <a class="interval" href="https://cohort-6-intervals.s3.amazonaws.com/Minor_6-C-A-flat.mp3"
+    onclick="playItHere(event, this)">m6</a>
+  <a class="interval" href="https://cohort-6-intervals.s3.amazonaws.com/Major_6-C%23-A%23.mp3"
+    onclick="playItHere(event, this)">M6</a>
+  <a class="interval" href="https://cohort-6-intervals.s3.amazonaws.com/Minor_7-E-D.mp3"
+    onclick="playItHere(event, this)">m7</a>
+  <a class="interval" href="https://cohort-6-intervals.s3.amazonaws.com/Major_7-C-B.mp3"
+    onclick="playItHere(event, this)">M7</a>
+  <a class="interval" href="https://cohort-6-intervals.s3.amazonaws.com/Octave_C-C.mp3"
+    onclick="playItHere(event, this)">Octave</a>
+
+</div>
+
 {% endblock %}
