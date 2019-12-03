@@ -2,28 +2,30 @@ var data1 = ['12', '19', '3', '5', '2', '3', '15', '10', '3', '7', '0', '5'];
 var data2 = ['8', '12', '3', '0', '2', '1', '10', '8', '3', '6', '0', '4'];
 
 function numberWrong(i) {
-       return (data1[i] - data2[i])
+  return (data1[i] - data2[i])
 }
-    
+
 
 var canvas = document.getElementById('myChart');
+canvas.height = 200;
 var data = {
   labels: ['Minor 2nd', 'Major 2nd', 'Minor 3rd', 'Major 3rd', 'Perfect 4th', 'Tritone', 'Perfect 5th', 'Minor 6th', 'Major 6th', 'Minor 7th', 'Major 7th', 'Octave'],
-  datasets: [{  
-    label: 'Incorrect', 
+  datasets: [{
+    label: 'Incorrect',
     data: data1,
     backgroundColor: 'rgba(255, 99, 132, 0.4)',
- 
+
     datalabels: {
       display: false,
     },
   }, {
     label: 'Correct',
-    data: data2,   
+    data: data2,
     datalabels: {
-      display: true},
+      display: true
+    },
     backgroundColor: 'rgba(0, 255, 125, 1)',
-  },  
+  },
   ]
 };
 var option = {
@@ -33,15 +35,17 @@ var option = {
   tooltips: {
     //   enabled:false,
     callback: {
-        label: function(tooltipItem,data1,data2) {
-            var label = data.datasets[tooltipItem.datasetIndex].label || '';
-            // label = (data1[i] - data2[i]);
-            label = boo;
-            return label;
-}}},
-//   tooltips: {
-//     enabled: true,
-//   },
+      label: function (tooltipItem, data1, data2) {
+        var label = data.datasets[tooltipItem.datasetIndex].label || '';
+        // label = (data1[i] - data2[i]);
+        label = boo;
+        return label;
+      }
+    }
+  },
+  //   tooltips: {
+  //     enabled: true,
+  //   },
   scales: {
     yAxes: [{
       scaleFontSize: 40,
@@ -53,7 +57,7 @@ var option = {
         min: 0,
         stepSize: 2,
         beginAtZero: true,
-        callback: function(value) {
+        callback: function (value) {
           return value + " "
         }
       },
@@ -61,18 +65,18 @@ var option = {
     xAxes: [{
       id: "bar-x-axis1",
       stacked: true,
-      barThickness: 30,     
+      barThickness: 30,
     }, {
       id: "bar-x-axis2",
       stacked: true,
-      display: false,      
+      display: false,
       barThickness: 10,
-    }, ],
+    },],
   },
   plugins: {
     datalabels: {
       anchor: 'end',
-      align: 'top'   
+      align: 'top'
     }
   }
 };
