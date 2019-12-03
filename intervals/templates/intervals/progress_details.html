@@ -4,16 +4,17 @@
 {% block content %}
 
 <div class="main-container-progress">
-    <a class="nav-link" href="/" style="text-decoration: none;">
-        <nav class="nav-progress-page">
-            <h1 class="nav-title">Music Interval Training</h1>
-        </nav>
-    </a>
-    <div class="charts-progress">
-        <div class="progress-details">
-            <canvas id="myChart" class="mychart"></canvas>
-        </div>
+  <a class="nav-link" href="/" style="text-decoration: none;">
+    <nav id="nav-progress-page">
+      <h1 class="nav-title">Music Interval Training</h1>
+    </nav>
+  </a>
+
+  <div class="charts-progress">
+    <div class="progress-details">
+      <canvas id="myChart" class="mychart"></canvas>
     </div>
+  </div>
 </div>
 <script>
 var numberWithCommas = function(x) {
@@ -21,7 +22,6 @@ var numberWithCommas = function(x) {
         return x;
     }
   };
-
 var num_incorrect = [{% for interval in chart_data.values %}{{ interval.incorrect }}, {% endfor %}];
 var num_correct = [{% for interval in chart_data.values %}{{ interval.correct }}, {% endfor %}];
     
@@ -32,12 +32,12 @@ var data = {
     {
         label: 'Correct',
         data: num_correct,   
-        backgroundColor: 'rgba(0, 255, 125, 1)',
+        backgroundColor: 'rgba(89, 171, 227, 1)',
     },  
     {   
         label: 'Incorrect',
         data: num_incorrect,
-        backgroundColor: 'rgba(255, 99, 132, 0.4)',
+        backgroundColor: 'rgba(248, 148, 6, 1)',
     }, 
   ]
 }
@@ -79,13 +79,10 @@ var options = {
     }
   }
 };
-
 var myBarChart = Chart.Bar(canvas, {
   data: data,
   options: options
 });
-
-
 // logic to get new data
 var getData = function() {
   $.ajax({
@@ -100,22 +97,19 @@ var getData = function() {
     }
   });
 };
-
 // get new data every 3 seconds
 setInterval(getData, 3000);
-
 </script>
 
-
 <script>
-function playItHere(e, link) {
-  var audio = document.createElement("audio");
-  var src = document.createElement("source");
-  src.src = link.href;
-  audio.appendChild(src);
-  audio.play();
-  e.preventDefault();
-}
+  function playItHere(e, link) {
+    var audio = document.createElement("audio");
+    var src = document.createElement("source");
+    src.src = link.href;
+    audio.appendChild(src);
+    audio.play();
+    e.preventDefault();
+  }
 </script>
 
 <div class="intervals-intro">
