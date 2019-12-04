@@ -26,8 +26,10 @@ var num_incorrect = [{% for interval in chart_data.values %}{{ interval.incorrec
 var num_correct = [{% for interval in chart_data.values %}{{ interval.correct }}, {% endfor %}];
     
 var canvas = document.getElementById('myChart');
+canvas.height = 150;
 var data = {
   labels: [{% for interval in chart_data.values %}"{{ interval.interval }}", {% endfor %}],
+   
   datasets: [
     {
         label: 'Correct',
@@ -45,11 +47,14 @@ var options = {
   legend: {
     display: true,
   },
+  {% comment %} responsive: true,
+  maintainAspectRatio: false, {% endcomment %}
   scales: {
     yAxes: [{
       stacked: true,
-      scaleFontSize: 40,
       scaleLabel: {
+        labelString: "# of Attempts",
+        fontSize: 15,
         display: true,
       },
       ticks: {
@@ -63,13 +68,11 @@ var options = {
     }],
     xAxes: [{
       id: "bar-x-axis1",
-      stacked: true,
-      barThickness: 30,     
+      stacked: true, 
     }, {
       id: "bar-x-axis2",
       stacked: true,
       display: false,      
-      barThickness: 10,
     }, ],
   },
   plugins: {
