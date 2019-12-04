@@ -1,6 +1,7 @@
 {% extends "intervals/base.html" %}
 {% load static %}
 {% block content %}
+
 <div class="main-page-container">
     <div id="amazon-root"></div>
     <script type="text/javascript">
@@ -15,17 +16,25 @@
             d.getElementById('amazon-root').appendChild(a);
         })(document);
     </script>
-    <div id="top"></div>
-    <div class="buttons-outerdiv">
-        <div id="home-page-nav" class="login-buttons">
-            <h1 id="title-for-mobile">Music Interval Training</h1>
-            <a href="#learn-more-outerdiv" id="btn-for-mobile1" style="animation-delay:0.07s">Learn More</a>
-            <a class="amazon-button" href id="LoginWithAmazon"></a>
-            <div class="learn-more-buttondiv">
-                <a href="#learn-more-outerdiv" class="learn-more-button" style="animation-delay:0.07s">Learn more</a>
+   
+    <header class="clearfix">
+        <div class="container">
+            <div class="header-left">
+                <h1 class="nav-h1">Music Interval Training</h1>
+            </div>
+            <div class="header-right">
+                <label for="open">
+                    <span class="hidden-desktop"></span>
+                </label>
+                <input type="checkbox" name="" id="open">
+                <nav>
+                    <a href="#learn-more-outerdiv">Learn More</a>
+                    <a href="{% url 'progress_details' %}">See Your Progress</a>
+                    <a href id="LoginWithAmazon">Amazon Log in</a>
+                </nav>
             </div>
         </div>
-    </div>
+    </header>
     <script type="text/javascript">
         document.getElementById('LoginWithAmazon').onclick = function () {
             options = {}
@@ -39,23 +48,24 @@
         };
     </script>
     <div class="quotes">
-        <h1 style="margin-bottom: 5%">"Alexa, open music interval training."</h1>
+        <h1 class="title-line"style="margin-bottom: 5%">"Alexa, open Music Interval Training."</h1>
         <div class="subtitle">
             <p>Make the jumble of notes you hear in your head</p>
             <p>become recognizable relationships requisite for</p>
-            <p>improvisation, composition and other smart stuff.</p>
+            <p>improvisation, composition</p>
+            <p>and other smart stuff.</p>
         </div>
     </div>
     <div class="intervals-pngdiv">
         <img alt="black and white image of intervals" class="intervals-png"
-            src="{% static 'images/diatonic_intervals.png' %}" style="width:60%;">
+            src="{% static 'images/diatonic_intervals_2.jpeg' %}" style="width:60%;">
     </div>
 </div>
 <div id="learn-more-outerdiv">
     <div class="chart-alexa-outer-div">
         <div class="alexa-img-div">
             <img alt="image of alexa device" src="static/images/alexa.jpg" class="alexa-img">
-            <p style="font-style: italic; margin-bottom: 5%;">"Alexa, open Music Interval Training"</p>
+            <p class="alexa-img-title"style="font-style: italic; margin-bottom: 5%;">"Alexa, open Music Interval Training"</p>
         </div>
         <div class="canvas-outerdiv">
             <h3 class="mobile-responsive"></h3>
@@ -88,8 +98,7 @@
 <footer class="footer">
     <div class="learn-more-button-outerdiv">
         <a class="learn-more-button" id="btn-for-mobile" href="#top" style="animation-delay:0.07s">Back to top</a>
-        <a class="learn-more-button" id="btn-for-mobile" href="{% url 'progress_details' %}"
-            style="animation-delay:0.14s">Progress</a>
+        
     </div>
 </footer>
 <footer>

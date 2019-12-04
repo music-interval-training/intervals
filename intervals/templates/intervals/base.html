@@ -6,8 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Arima+Madurai&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Alegreya&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -19,20 +18,7 @@
 
 
 <body>
-    <div id="amazon-root"></div>
-    <script type="text/javascript">
-
-        window.onAmazonLoginReady = function () {
-            amazon.Login.setClientId('amzn1.application-oa2-client.4193140bef1f4d1e957b5e80812c64ca');
-        };
-        (function (d) {
-            var a = d.createElement('script'); a.type = 'text/javascript';
-            a.async = true; a.id = 'amazon-login-sdk';
-            a.src = 'https://assets.loginwithamazon.com/sdk/na/login1.js';
-            d.getElementById('amazon-root').appendChild(a);
-        })(document);
-
-    </script>
+  
     {% block content %}
 
 
