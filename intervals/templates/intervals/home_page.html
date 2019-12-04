@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 
-<div class="main-page-container">
+{% comment %} <div class="main-page-container"> {% endcomment %}
     <div id="amazon-root"></div>
     <script type="text/javascript">
         window.onAmazonLoginReady = function () {
@@ -28,9 +28,9 @@
                 </label>
                 <input type="checkbox" name="" id="open">
                 <nav>
-                    <a href="#learn-more-outerdiv">Learn More</a>
+                    {% comment %} <a href="#learn-more-outerdiv">Learn More</a> {% endcomment %}
                     <a href="{% url 'progress_details' %}">See Your Progress</a>
-                    <a href id="LoginWithAmazon">Amazon Login</a>
+                    {% comment %} <a href id="LoginWithAmazon">Amazon Login</a> {% endcomment %}
                 </nav>
             </div>
         </div>
@@ -47,23 +47,29 @@
             return false;
         };
     </script>
-    <div class="quotes">
-        <h1 class="title-line"style="margin-bottom: 5%">"Alexa, open Music Interval Training."</h1>
+    {% comment %} <div class="quotes">
+        <h1 class="title-line">"Alexa, open Music Interval Training."</h1>
         <div class="subtitle">
-            <p>Make the jumble of notes you hear in your head</p>
+        <p>Progress you can track.</p> {% endcomment %}
+            {% comment %} <p>Make the jumble of notes you hear in your head</p>
             <p>become recognizable relationships requisite for</p>
             <p>improvisation, composition</p>
-            <p>and other smart stuff.</p>
-        </div>
-    </div>
-    <div class="intervals-pngdiv">
+            <p>and other smart stuff.</p> {% endcomment %}
+        {% comment %} </div> {% endcomment %}
+        {% comment %} <div class="alexa-img-div">
+            <img alt="image of alexa device" src="static/images/alexa.jpg" class="alexa-img">
+            <p class="alexa-img-title"style="font-style: italic; margin-bottom: 5%;">"Alexa, open Music Interval Training"</p>
+        </div>  {% endcomment %}
+    {% comment %} </div> {% endcomment %}
+    {% comment %} <div class="intervals-pngdiv">
         <img alt="black and white image of intervals" class="intervals-png"
             src="{% static 'images/diatonic_intervals_2.jpeg' %}" style="width:60%;">
-    </div>
-</div>
+          
+    </div> {% endcomment %}
+{% comment %} </div> {% endcomment %}
 <div id="learn-more-outerdiv">
     <div class="chart-alexa-outer-div">
-        <div class="alexa-img-div">
+        <div style="border-bottom: 0.5px solid #a09d9d;margin-bottom: 2%; padding-bottom: 2%;"class="alexa-img-div">
             <img alt="image of alexa device" src="static/images/alexa.jpg" class="alexa-img">
             <p class="alexa-img-title"style="font-style: italic; margin-bottom: 5%;">"Alexa, open Music Interval Training"</p>
         </div>
@@ -75,7 +81,10 @@
         </div>
     </div>
     <div id="learn-more">
-        <div style="border-bottom: 0.5px solid #a09d9d;margin-bottom: 2%; padding-bottom: 2%;">
+        <div class="alexa-screendiv">
+            <img class="alexa-screen"src="static/images/alexascreenshot.png">
+        </div>
+        <div class="info-header"style="border-top: 0.5px solid #a09d9d;margin-bottom: 2%; padding-bottom: 2%;">
             <h3>Music Interval Training</h3>
             <p>This skill helps those who are seeking to improve the ability to hear and identify music intervals. Alexa
                 randomly plays intervals for the user to guess and responds whether the response is correct or incorrect. 
@@ -83,7 +92,7 @@
                 play intervals they wish to practice.
              </p>
         </div>
-        <div style="border-bottom: 0.5px solid #a09d9d;margin-bottom: 2%; padding-bottom: 2%;">
+        {% comment %} <div style="border-bottom: 0.5px solid #a09d9d;margin-bottom: 2%; padding-bottom: 2%;">
             <h3>How to use:</h3>
             <p>To Get Started: Say, "Alexa, open Music Interval Training"</p>
             <p>You will guess the type of interval played and Alexa will confirm whether correct or not.</p>
@@ -92,14 +101,14 @@
         <div class="intro-alexa-font">
             <h4>Start by Saying:</h4>
             <p>"Alexa, open Music Interval Training"</p>
-        </div>
+        </div> {% endcomment %}
     </div>
 </div>
 <footer class="footer">
-    <div class="learn-more-button-outerdiv">
+    {% comment %} <div class="learn-more-button-outerdiv">
         <a class="learn-more-button" id="btn-for-mobile" href="#top" style="animation-delay:0.07s">Back to top</a>
         
-    </div>
+    </div> {% endcomment %}
 </footer>
 <footer>
     <div class="footer2">Music Interval Training by Leslie Heal Ray, Chris Kabler and Bitha Jordan.</div>
