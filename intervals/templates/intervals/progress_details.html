@@ -29,6 +29,7 @@ var canvas = document.getElementById('myChart');
 canvas.height = 150;
 var data = {
   labels: [{% for interval in chart_data.values %}"{{ interval.interval }}", {% endfor %}],
+   
   datasets: [
     {
         label: 'Correct',
@@ -51,8 +52,9 @@ var options = {
   scales: {
     yAxes: [{
       stacked: true,
-      scaleFontSize: 40,
       scaleLabel: {
+        labelString: "# of Attempts",
+        fontSize: 15,
         display: true,
       },
       ticks: {
@@ -66,7 +68,7 @@ var options = {
     }],
     xAxes: [{
       id: "bar-x-axis1",
-      stacked: true,    
+      stacked: true, 
     }, {
       id: "bar-x-axis2",
       stacked: true,
