@@ -26,7 +26,7 @@ var num_incorrect = [{% for interval in chart_data.values %}{{ interval.incorrec
 var num_correct = [{% for interval in chart_data.values %}{{ interval.correct }}, {% endfor %}];
     
 var canvas = document.getElementById('myChart');
-canvas.height = 150;
+canvas.height = 200;
 var data = {
   labels: [{% for interval in chart_data.values %}"{{ interval.interval }}", {% endfor %}],
    
@@ -47,8 +47,8 @@ var options = {
   legend: {
     display: true,
   },
-  {% comment %} responsive: true,
-  maintainAspectRatio: false, {% endcomment %}
+  responsive: true,
+  maintainAspectRatio: true,
   scales: {
     yAxes: [{
       stacked: true,
