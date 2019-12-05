@@ -58,7 +58,7 @@ var options = {
         display: true,
       },
       ticks: {
-        max: {{ max_attempts }},
+        max: {{ max_attempts|default_if_none:1  }},
         min: 0,
         beginAtZero: true,
         callback: function(value) {
