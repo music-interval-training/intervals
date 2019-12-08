@@ -96,11 +96,11 @@ class LaunchRequestHandler(AbstractRequestHandler):
 
         handler_input.attributes_manager.session_attributes = attrs
         speak_output = f"Great! I will play an interval. <audio src='{audio_url}' /> What is your guess"
-      
+        reprompt_output = f"I did not understand. Please guess an interval."
         return (
                 handler_input.response_builder
                     .speak(speak_output)
-                    .ask(speak_output)
+                    .ask(reprompt_output)
                     .response
             )
 
