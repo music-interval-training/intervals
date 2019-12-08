@@ -95,7 +95,7 @@ class LaunchRequestHandler(AbstractRequestHandler):
         logger.info(audio_url)
 
         handler_input.attributes_manager.session_attributes = attrs
-        speak_output = f"Great! I will play an interval for you. <audio src='{audio_url}' /> What is your guess"
+        speak_output = f"Great! I will play an interval. <audio src='{audio_url}' /> What is your guess"
       
         return (
                 handler_input.response_builder
@@ -116,17 +116,19 @@ class IntervalGuessIntentHandler(AbstractRequestHandler):
         audio_url = session_attrs['audio_url']
         slots = handler_input.request_envelope.request.intent.slots
         guess = slots["INTERVAL"].value
+
+        is_correct = guess in interval
         Record.objects.create(
             guess=guess,
             interval=interval[0],
-            audio_url=audio_url
+            audio_url=audio_url,
+            is_correct=1 if is_correct else 0
         )
-        is_correct = guess in interval
         correct_guess_responses = ['Great job! You guessed correct!', 'Well done!', 'You mastered that one!', 'Way to kill it Beethoven!', 'Nice! you got it right!']
         if is_correct:
             speak_output = choice(correct_guess_responses)
         else:
-            incorrect_guess_responses = [f"You guessed {guess} but the interval was a {interval[0]}",  f"Epic fail! You guessed {guess} but it was a {interval[0]}", f"Nice try! You were wrong! It was a {interval[0]} but you guessed {guess}", f"next time you will get it right but the correct interval was a {interval[0]} you guessed {guess}! Please don't cry!"]
+            incorrect_guess_responses = [f"You guessed {guess} but the interval was a {interval[0]}",  f"Keep trying! You guessed {guess} but it was a {interval[0]}", f"Keep trying! But you got it wrong! It was a {interval[0]} but you guessed {guess}", f"next time you will get it right but the correct interval was a {interval[0]} you guessed {guess}! Please don't cry!"]
             speak_output = choice(incorrect_guess_responses)
         speak_output = f"{speak_output} Do you want to continue?"
 
@@ -249,7 +251,6 @@ class ResponseLogger(AbstractResponseInterceptor):
 
 # Register all handlers, interceptors etc.
 sb.add_request_handler(LaunchRequestHandler())
-# sb.add_request_handler(StartTrainingIntentHandler())
 sb.add_request_handler(IntervalGuessIntentHandler())
 sb.add_request_handler(HelpIntentHandler())
 sb.add_request_handler(CancelOrStopIntentHandler())
